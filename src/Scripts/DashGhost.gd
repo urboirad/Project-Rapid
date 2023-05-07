@@ -1,8 +1,10 @@
-extends Sprite
+extends Sprite2D
+
+var tween = create_tween()
 
 func _ready():
-	$Tween.interpolate_property(self, "modulate:a", 1.0, 0.0, 0.5, 3, 1)
-	$Tween.start()
+	tween.tween_property(self, "modulate:a", 1.0, 0.5)
+	#tween.
 
 func _physics_process(delta):
 	pass

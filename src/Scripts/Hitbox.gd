@@ -1,16 +1,16 @@
-tool
+@tool
 extends Node2D
 
-export var x = 0
-export var y = 0
-export var width = 16
-export var height = 16
-export var color = Color(0,0,1,0.5)
+@export var x = 0
+@export var y = 0
+@export var width = 16
+@export var height = 16
+@export var color = Color(0,0,1,0.5)
 
-var left setget ,get_left
-var right setget ,get_right
-var top setget ,get_top
-var bottom setget ,get_bottom
+var left : get = get_left
+var right : get = get_right
+var top : get = get_top
+var bottom : get = get_bottom
 
 func get_left():
 	return global_position.x + x

@@ -1,32 +1,36 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 # Nodes
-onready var hitbox = $Hitbox
-onready var Anim = $AnimatedSprite
-onready var dash = $Dash
-onready var wallCast = $WallDetector
-onready var floorCast = $floorDetect
-onready var slopeCast = $slopeDetect
-onready var gR = $groundDetectR
-onready var gL = $groundDetectL
+@onready var hitbox = $Hitbox
+@onready var Anim = $AnimatedSprite2D
+#@onready var dash = $Dash
+@onready var wallCast = $WallDetector
+@onready var floorCast = $floorDetect
+@onready var slopeCast = $slopeDetect
+@onready var gR = $groundDetectR
+@onready var gL = $groundDetectL
 
 # Export Variables
-export(int) var JUMP_FORCE = -130
-export(int) var JUMP_RELEASE_FORCE = -70
-export(int) var MAX_SPEED = 50
-export(int) var ACCELERATION = 10
-export(int) var FRICTION = 10
-export(int) var GRAVITY = 4
-export(int) var ADDITIONAL_FALL_GRAVITY = 4
+@export var JUMP_FORCE: int = -130
+@export var JUMP_RELEASE_FORCE: int = -70
+@export var MAX_SPEED: int = 50
+@export var ACCELERATION: int = 10
+@export var FRICTION: int = 10
+@export var GRAVITY: int = 4
+@export var ADDITIONAL_FALL_GRAVITY: int = 4
 
 # Physics Variables
-var velocity = Vector2.ZERO
 var collisionNorm = get_floor_normal()
 const UP = Vector2(0, -1)
+var axis = Vector2()
 
 # Dash Variables
 var dash_speed = 0
-const dash_duration = 0.2
+var dash_duration = 0.0
+var trail = false
+var isDashing = false
+var hasDashed = false
+var spriteColor = "white"
 
 # Animation Bools / Variables
 var dir = 0
@@ -47,11 +51,12 @@ func _physics_process(delta):
 	forwardCamera() # Moves camera forward to compensate for speed
 	wallDetector() # Checks if Wall Detector is colliding
 	rotateSprite() # rotates sprite depeding on surface
-	cameraZoom() # Camera zooms in when in tight spaces
+	cameraZoom() # Camera3D zooms in when in tight spaces
 	debugText() # Updates debug text
 	apply_gravity() # Applies character's gravity
+	dash(delta)
 	
-	if !dash.is_dashing(): # If Player isn't Dashing
+	if !isDashing: # If Player isn't Dashing
 		animations() # Updates Animations
 	
 	# Left and Right Input
@@ -75,47 +80,70 @@ func _physics_process(delta):
 	
 	# Dash speed
 	dash_speed = (velocity.x + 1800) * delta
-
-	# Dash input
-	if Input.is_action_just_pressed("dash") && !dash.is_dashing() && dash.can_dash:
-		dash.start_dash(Anim, dash_duration)
 	
 	# Enable Wall Detector (for wall bounce)
 	if velocity.y <= 20 && wallCast.enabled == false:
 		wallCast.enabled = true
 	
 	# If player is dashing...
-	if dash.is_dashing():
+	if isDashing:
 		Anim.play("Dash")
 		if wallCast.is_colliding():
 			if Anim.flip_h == false:
-				dash.end_dash()
+				#dash.end_dash()
 				Anim.flip_h = true
 				wallCast.enabled = false
 				wallJump()
 			else:
-				dash.end_dash()
+				#dash.end_dash()
 				Anim.flip_h = false
 				wallCast.enabled = false
 				wallJump()
 				
 		if Anim.flip_h == false:
-			velocity.x = velocity.x + dash_speed if dash.is_dashing() else MAX_SPEED
+			velocity.x = velocity.x + dash_speed if isDashing else MAX_SPEED
 		else:
-			velocity.x = velocity.x - dash_speed if dash.is_dashing() else MAX_SPEED
+			velocity.x = velocity.x - dash_speed if isDashing else MAX_SPEED
 	
 	# Player snap and no snap control
-	var snap = Vector2.DOWN * 128 if is_on_floor() else Vector2.ZERO
-	if get_floor_normal().angle() < -0.7 && !Input.is_action_just_pressed("jump") && floorCast.is_colliding() && slopeCast.is_colliding():
-		velocity = move_and_slide_with_snap(velocity, snap, UP, true)
-	else:
-		velocity = move_and_slide(velocity, UP, true)
+	var snap = Vector2.DOWN * 128 if is_on_floor() else Vector2.UP
+	#if get_floor_normal().angle() < -0.7 && !Input.is_action_just_pressed("jump") && floorCast.is_colliding() && slopeCast.is_colliding():
+		
+	if !slopeCast.is_colliding() && gR.is_colliding() && velocity.x >= 300 && Anim.rotation > -0.8 && Anim.rotation < -0.0:
+		if is_on_floor():
+			jump()
+	elif !slopeCast.is_colliding() && gL.is_colliding() && velocity.x <= -300 && Anim.rotation > -0.8 && Anim.rotation < -0.0:
+		if is_on_floor():
+			jump()
+		
+	move_and_slide()
 		
 	if charge_jumping:
 		pass
 			
 func jump(): # Jump function dummy
 	velocity.y = JUMP_FORCE
+
+func dash(delta):
+	if !hasDashed:
+		if Input.is_action_just_pressed("dash"):
+			velocity = axis * dash_speed * delta
+			spriteColor = "blue"
+			Input.start_joy_vibration(0, 1, 1, 0.2)
+			isDashing = true
+			hasDashed = true
+
+	if isDashing:
+		trail = true
+		dash_duration += 1
+		if dash_duration >= int(0.25 * 1 / delta):
+			isDashing = false
+			trail = false
+			dash_duration = 0
+
+	if is_on_floor() && velocity.y >= 0:
+		hasDashed = false
+		spriteColor = "red"
 
 func wallJump(): # Wall bounce function
 	if Anim.flip_h == false:
@@ -212,7 +240,7 @@ func animations(): # Animation update
 				
 	# Match Anim Speed
 	if velocity.x >= 300 or velocity.x <= -300:
-		Anim.speed_scale = lerp(Anim.speed_scale, 2, 0.01)
+		Anim.speed_scale = lerp(Anim.speed_scale, 2.0, 0.01)
 	else:
 		Anim.speed_scale = 1
 
@@ -228,20 +256,21 @@ func apply_acceleration(amount):
 # Camera
 func forwardCamera():
 	if velocity.x >= MAX_SPEED && Anim.flip_h == false:
-		$Camera2D.offset_h = move_toward(0, 0.6, 1)
+		$Camera2D.drag_horizontal_offset = move_toward(0, 0.5, 1)
 	elif velocity.x <= -MAX_SPEED && Anim.flip_h == true:
-		$Camera2D.offset_h = move_toward(0, -0.6, 1)
+		$Camera2D.drag_horizontal_offset = move_toward(0, -0.5, 1)
 	else:
-		$Camera2D.offset_h = move_toward($Camera2D.offset_h, 0, 1)
+		$Camera2D.drag_horizontal_offset = move_toward($Camera2D.drag_horizontal_offset, 0, 1)
 func cameraZoom():
-	var close = 0.2
-	var far   = 0.4
+	var cam = $Camera2D
+	var close = 5.0
+	var far   = 4.0
 	if $cameraUp.is_colliding() == true && $cameraDown.is_colliding() == true:
-		$Camera2D.zoom.x = lerp($Camera2D.zoom.x ,close, 0.2)
-		$Camera2D.zoom.y = lerp($Camera2D.zoom.y ,close, 0.2)
+		cam.zoom.x = lerp(cam.zoom.x ,close, 0.2)
+		cam.zoom.y = lerp(cam.zoom.y ,close, 0.2)
 	else:
-		$Camera2D.zoom.x = lerp($Camera2D.zoom.x ,far, 0.2)
-		$Camera2D.zoom.y = lerp($Camera2D.zoom.y ,far, 0.2)
+		cam.zoom.x = lerp(cam.zoom.x ,far, 0.2)
+		cam.zoom.y = lerp(cam.zoom.y ,far, 0.2)
 
 func wallDetector():
 	if Anim.flip_h == false:
@@ -278,10 +307,10 @@ func _on_AnimatedSprite_animation_finished():
 func rotateSprite():
 	if is_on_floor():
 			Anim.rotation = lerp(Anim.rotation, get_floor_normal().angle() + PI/2, 0.5)
-			dash.rotation = lerp(dash.rotation, get_floor_normal().angle() + PI/2, 0.5)
+			#dash.rotation = lerp(dash.rotation, get_floor_normal().angle() + PI/2, 0.5)
 	else:
-		Anim.rotation = lerp(Anim.rotation, 0, 0.1)
-		dash.rotation = lerp(dash.rotation, 0, 0.1)
+		Anim.rotation = lerp(Anim.rotation, 0.0, 0.1)
+		#dash.rotation = lerp(dash.rotation, 0.00000000001, 0.1)
 
 # Fall Limit
 func _on_Fall_limit_area_entered(area):
@@ -296,3 +325,21 @@ func debugText():
 	$DebugText/PlayerYvel.text = "Player Y-Vel: " + str(curYvel)
 	$DebugText/PlayerAngle.text = "Player Angle: " + str(curRotation)
 	$DebugText/Crouching.text = "Player Angle: " + str(curRotation)
+
+func _on_trail_timer_timeout():
+	if trail:
+		var trail_sprite = Sprite2D.new()
+		trail_sprite.texture = load("res://Assets/Player/Player.png")
+		trail_sprite.vframes = 1
+		trail_sprite.hframes = 22
+		trail_sprite.frame = 9
+		trail_sprite.scale.y = Anim.scale.y
+		trail_sprite.scale.x = Anim.scale.x
+		trail_sprite.flip_h = Anim.flip_h
+		trail_sprite.set_script(load("res://Scripts/trail_fade.gd"))
+		
+		get_parent().add_child(trail_sprite)
+		trail_sprite.position = position
+		trail_sprite.position.y = trail_sprite.position.y + 15
+		trail_sprite.modulate = Color( 1, 0.08, 0.58, 0.5 )
+		trail_sprite.z_index = -49

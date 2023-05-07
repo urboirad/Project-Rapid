@@ -1,6 +1,6 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-export var move_speed = 200.0
+@export var move_speed = 200.0
 var dash_speed = move_speed * 2
 const dash_duration = 0.2
 
@@ -8,21 +8,21 @@ var moving_on_floor = false
 var velocity := Vector2.ZERO
 var move_dir = 0.0
 
-export var jump_height : float
-export var jump_time_to_peak : float
-export var jump_time_to_descent : float
+@export var jump_height : float
+@export var jump_time_to_peak : float
+@export var jump_time_to_descent : float
 
-onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
-onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
-onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
+@onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
+@onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
+@onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descent * jump_time_to_descent)) * -1.0
 
-onready var sprite = $AnimatedSprite
-onready var dash = $Dash
+@onready var sprite = $AnimatedSprite2D
+@onready var dash = $Dash
 
-onready var AnimTree = $AnimatedSprite/AnimationTree
+@onready var AnimTree = $AnimatedSprite2D/AnimationTree
 
 func _ready():
-	$AnimatedSprite/AnimationTree.active = true
+	$AnimatedSprite2D/AnimationTree.active = true
 
 func _physics_process(delta):
 	velocity.y += get_gravity() * delta
@@ -39,7 +39,10 @@ func _physics_process(delta):
 		else:
 			velocity.x = velocity.x - dash_speed if dash.is_dashing() else move_speed
 	
-	velocity = move_and_slide(velocity, Vector2.UP)
+	set_velocity(velocity)
+	set_up_direction(Vector2.UP)
+	move_and_slide()
+	velocity = velocity
 
 func get_input():
 	

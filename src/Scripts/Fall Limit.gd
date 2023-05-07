@@ -1,7 +1,7 @@
 extends Area2D
 
-onready var shape = $CollisionShape2D
-export var CameraLimit = 10000000
+@onready var shape = $CollisionShape2D
+@export var CameraLimit = 10000000
 
 
 # Called when the node enters the scene tree for the first time.

@@ -6,36 +6,36 @@
 script = ExtResource( 1 )
 
 [node name="CurFPS" type="Label" parent="."]
-margin_right = 240.0
-margin_bottom = 16.0
+offset_right = 240.0
+offset_bottom = 16.0
 text = "FPS"
 
 [node name="FramesDrawn" type="Label" parent="."]
-margin_top = 16.0
-margin_right = 240.0
-margin_bottom = 32.0
+offset_top = 16.0
+offset_right = 240.0
+offset_bottom = 32.0
 text = "Frames Drawn"
 
 [node name="PlayerXvel" type="Label" parent="."]
-margin_top = 48.0
-margin_right = 240.0
-margin_bottom = 64.0
+offset_top = 48.0
+offset_right = 240.0
+offset_bottom = 64.0
 text = "Player X-Vel:"
 
 [node name="PlayerYvel" type="Label" parent="."]
-margin_top = 64.0
-margin_right = 240.0
-margin_bottom = 80.0
+offset_top = 64.0
+offset_right = 240.0
+offset_bottom = 80.0
 text = "Player Y-Vel:"
 
 [node name="PlayerAngle" type="Label" parent="."]
-margin_top = 80.0
-margin_right = 240.0
-margin_bottom = 96.0
+offset_top = 80.0
+offset_right = 240.0
+offset_bottom = 96.0
 text = "Player Angle:"
 
 [node name="Crouching" type="Label" parent="."]
-margin_top = 96.0
-margin_right = 240.0
-margin_bottom = 112.0
+offset_top = 96.0
+offset_right = 240.0
+offset_bottom = 112.0
 text = "Player Angle:"
