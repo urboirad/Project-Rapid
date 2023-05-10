@@ -154,9 +154,9 @@ func wallJump(): # Wall bounce function
 		velocity.x = velocity.x - dash_speed # Make player bounce off
 
 func animations(): # Animation update
-	if Input.is_action_just_pressed("right"):
+	if Input.is_action_pressed("right"):
 		Anim.flip_h = false
-	elif Input.is_action_just_pressed("left"):
+	elif Input.is_action_pressed("left"):
 		Anim.flip_h = true
 	# Right...
 	if Input.is_action_pressed("right") && !Input.is_action_pressed("left"):
