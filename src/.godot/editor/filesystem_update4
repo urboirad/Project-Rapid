@@ -1,5 +1,16 @@
 res://default_env.tres
 res://World.tscn
 res://Tilesets/Test.tres
+res://main_theme.tres
 res://Scenes/Player.tscn
-res://Scripts/Player.gd
+res://Scenes/menu.tscn
+res://Scripts/2dLogoRotate.gd
+res://Scripts/menu.gd
+res://Scenes/settings_menu.tscn
+res://Scripts/settings_menu.gd
+res://Scripts/global.gd
+res://Scenes/fps_label.tscn
+res://Scripts/fps_label.gd
+res://default_bus_layout.tres
+res://Scripts/scene_transition.gd
+res://Scenes/scene_transition.tscn

@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://r7pa3bx4t8xj"]
+
+[ext_resource type="FontFile" uid="uid://dyhsg2j4272wr" path="res://ethnocentric rg.otf" id="1_saoqx"]
+
+[resource]
+default_font = ExtResource("1_saoqx")
+Fonts/fonts/large = ExtResource("1_saoqx")
+Fonts/fonts/normal = ExtResource("1_saoqx")

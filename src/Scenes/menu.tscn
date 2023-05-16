@@ -1,0 +1,144 @@
+[gd_scene load_steps=17 format=3 uid="uid://bcujpqex3xnv2"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_7xier"]
+[ext_resource type="Texture2D" uid="uid://cihewlw08338i" path="res://LogoFullHD.png" id="1_v6k4w"]
+[ext_resource type="Theme" uid="uid://r7pa3bx4t8xj" path="res://main_theme.tres" id="3_x4i4m"]
+[ext_resource type="Shader" path="res://menu.gdshader" id="4_f7vry"]
+[ext_resource type="Texture2D" uid="uid://c6qc7c481mocj" path="res://resurrect-64-8x.png" id="5_aakuy"]
+[ext_resource type="AudioStream" uid="uid://cw0fgrjbd5q75" path="res://Music/Project Rapid - Menu.wav" id="5_bpqnf"]
+[ext_resource type="Texture2D" uid="uid://4gl8b3pyveru" path="res://Dark-Red-Wallpaper-Desktop-Aesthetic-Comitatofesteteolo.xyz-1.png" id="6_c7h14"]
+[ext_resource type="Script" path="res://Scripts/2dLogoRotate.gd" id="7_xkups"]
+[ext_resource type="AudioStream" uid="uid://bke4rotccdx3p" path="res://SFX/Menu/MENU_Pick.wav" id="9_ypu0h"]
+[ext_resource type="AudioStream" uid="uid://c1ggdq8mok2ko" path="res://SFX/Menu/MESSAGE-B_Accept.wav" id="10_yghw4"]
+[ext_resource type="AudioStream" uid="uid://v6o0avnkxy0i" path="res://SFX/Menu/MESSAGE-B_Decline.wav" id="11_d7oh2"]
+[ext_resource type="AudioStream" uid="uid://berocfpgtpg03" path="res://SFX/Menu/MENU A_Select.wav" id="12_qgt58"]
+[ext_resource type="AudioStream" uid="uid://p13iwbpwchff" path="res://SFX/Menu/MENU A - Back.wav" id="13_820t8"]
+[ext_resource type="PackedScene" uid="uid://dp3xi1syur18b" path="res://Scenes/settings_menu.tscn" id="14_pntce"]
+[ext_resource type="PackedScene" uid="uid://dkwrgwa2lse5s" path="res://Scenes/fps_label.tscn" id="15_dj61d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j3ywp"]
+shader = ExtResource("4_f7vry")
+shader_parameter/screen_height = 640.0
+shader_parameter/amplitude = 0.075
+shader_parameter/frequency = 5.0
+shader_parameter/speed = 0.5
+shader_parameter/amplitude_vertical = 0.0
+shader_parameter/frequency_vertical = 0.0
+shader_parameter/speed_vertical = 0.0
+shader_parameter/scroll_direction = Vector2(1, 0)
+shader_parameter/scrolling_speed = 0.08
+shader_parameter/enable_palette_cycling = false
+shader_parameter/palette_speed = 0.0
+shader_parameter/palette = ExtResource("5_aakuy")
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_7xier")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_x4i4m")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="TextureRect" parent="Control"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_j3ywp")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -273.0
+offset_top = -133.0
+offset_right = 1647.0
+offset_bottom = 947.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_c7h14")
+
+[node name="Logo" type="Sprite2D" parent="Control"]
+position = Vector2(636, 382)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_v6k4w")
+script = ExtResource("7_xkups")
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = 454.0
+offset_right = 297.0
+offset_bottom = 734.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="StartButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 29
+text = "Start Demo"
+
+[node name="SettingsButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 29
+text = "SETTINGS
+"
+
+[node name="QuitButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 29
+text = "QUIT
+"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bpqnf")
+autoplay = true
+bus = &"Music"
+
+[node name="HoverSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ypu0h")
+
+[node name="SelectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_qgt58")
+bus = &"SFX"
+
+[node name="ConfirmSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_yghw4")
+bus = &"SFX"
+
+[node name="ExitSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_d7oh2")
+
+[node name="PopupSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_qgt58")
+
+[node name="PopupCloseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_820t8")
+
+[node name="SettingsMenu" parent="." instance=ExtResource("14_pntce")]
+
+[node name="FpsLabel" parent="." instance=ExtResource("15_dj61d")]
+
+[connection signal="mouse_entered" from="Control/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_entered" from="Control/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="Control/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
