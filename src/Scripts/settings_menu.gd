@@ -42,4 +42,9 @@ func _on_music_volume_slider_value_changed(value):
 
 
 func _on_sfx_volume_slider_value_changed(value):
+	Global.update_sfx_vol(value)
+
+
+func _on_laguage_option_button_item_selected(index):
+	Global.toggle_language(index)
 	pass

@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c1ksbvd7u5tnm"
+
+[deps]
+
+files=["res://roject Rapid '23 Translation.en.translation", "res://roject Rapid '23 Translation.sp.translation", "res://roject Rapid '23 Translation.ja.translation"]
+
+source_file="res://roject Rapid '23 Translation.csv"
+dest_files=["res://roject Rapid '23 Translation.en.translation", "res://roject Rapid '23 Translation.sp.translation", "res://roject Rapid '23 Translation.ja.translation"]
+
+[params]
+
+compress=true
+delimiter=0

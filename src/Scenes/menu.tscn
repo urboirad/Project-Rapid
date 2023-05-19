@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://bcujpqex3xnv2"]
+[gd_scene load_steps=16 format=3 uid="uid://bcujpqex3xnv2"]
 
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_7xier"]
 [ext_resource type="Texture2D" uid="uid://cihewlw08338i" path="res://LogoFullHD.png" id="1_v6k4w"]
-[ext_resource type="Theme" uid="uid://r7pa3bx4t8xj" path="res://main_theme.tres" id="3_x4i4m"]
+[ext_resource type="Theme" uid="uid://bv6ucyhl2e1we" path="res://main_theme.tres" id="3_x4i4m"]
 [ext_resource type="Shader" path="res://menu.gdshader" id="4_f7vry"]
-[ext_resource type="Texture2D" uid="uid://c6qc7c481mocj" path="res://resurrect-64-8x.png" id="5_aakuy"]
 [ext_resource type="AudioStream" uid="uid://cw0fgrjbd5q75" path="res://Music/Project Rapid - Menu.wav" id="5_bpqnf"]
 [ext_resource type="Texture2D" uid="uid://4gl8b3pyveru" path="res://Dark-Red-Wallpaper-Desktop-Aesthetic-Comitatofesteteolo.xyz-1.png" id="6_c7h14"]
 [ext_resource type="Script" path="res://Scripts/2dLogoRotate.gd" id="7_xkups"]
@@ -13,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://v6o0avnkxy0i" path="res://SFX/Menu/MESSAGE-B_Decline.wav" id="11_d7oh2"]
 [ext_resource type="AudioStream" uid="uid://berocfpgtpg03" path="res://SFX/Menu/MENU A_Select.wav" id="12_qgt58"]
 [ext_resource type="AudioStream" uid="uid://p13iwbpwchff" path="res://SFX/Menu/MENU A - Back.wav" id="13_820t8"]
-[ext_resource type="PackedScene" uid="uid://dp3xi1syur18b" path="res://Scenes/settings_menu.tscn" id="14_pntce"]
+[ext_resource type="PackedScene" uid="uid://b3w30g2cihos3" path="res://Scenes/settings_menu.tscn" id="14_pntce"]
 [ext_resource type="PackedScene" uid="uid://dkwrgwa2lse5s" path="res://Scenes/fps_label.tscn" id="15_dj61d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j3ywp"]
@@ -29,7 +28,6 @@ shader_parameter/scroll_direction = Vector2(1, 0)
 shader_parameter/scrolling_speed = 0.08
 shader_parameter/enable_palette_cycling = false
 shader_parameter/palette_speed = 0.0
-shader_parameter/palette = ExtResource("5_aakuy")
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_7xier")
@@ -98,43 +96,49 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 29
-text = "SETTINGS
-"
+text = "Settings"
 
 [node name="QuitButton" type="Button" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 29
-text = "QUIT
-"
+text = "Quit"
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_bpqnf")
+volume_db = -10.0
 autoplay = true
 bus = &"Music"
 
 [node name="HoverSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ypu0h")
+volume_db = -10.0
 
 [node name="SelectSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_qgt58")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="ConfirmSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_yghw4")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="ExitSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_d7oh2")
+volume_db = -10.0
 
 [node name="PopupSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_qgt58")
+volume_db = -10.0
 
 [node name="PopupCloseSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_820t8")
+volume_db = -10.0
 
 [node name="SettingsMenu" parent="." instance=ExtResource("14_pntce")]
+visible = false
 
 [node name="FpsLabel" parent="." instance=ExtResource("15_dj61d")]
 

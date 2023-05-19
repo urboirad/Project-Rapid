@@ -2,6 +2,15 @@ extends Node
 
 signal fps_display(value)
 
+func toggle_language(value):
+	if value == 0:
+		TranslationServer.set_locale("en")
+	if value == 1:
+		TranslationServer.set_locale("sp")
+	if value == 2:
+		TranslationServer.set_locale("ja")
+	pass
+
 func toggle_fullscreen(value):
 	if value:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

@@ -15,13 +15,9 @@ var sfxPlay = false
 
 @onready var settings_menu = $SettingsMenu
 
-@onready var selction = $Control/ControllerSelction
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
 	if startButton.button_pressed:

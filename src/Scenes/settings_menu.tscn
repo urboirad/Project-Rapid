@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dp3xi1syur18b"]
+[gd_scene load_steps=4 format=3 uid="uid://b3w30g2cihos3"]
 
-[ext_resource type="Theme" uid="uid://r7pa3bx4t8xj" path="res://main_theme.tres" id="1_q84a3"]
+[ext_resource type="Theme" uid="uid://bv6ucyhl2e1we" path="res://main_theme.tres" id="1_q84a3"]
 [ext_resource type="Script" path="res://Scripts/settings_menu.gd" id="1_t46uk"]
-[ext_resource type="FontFile" uid="uid://dyhsg2j4272wr" path="res://ethnocentric rg.otf" id="3_vopte"]
+[ext_resource type="FontFile" uid="uid://dyhsg2j4272wr" path="res://Fonts/ethnocentric rg.otf" id="3_mldv0"]
 
 [node name="SettingsMenu" type="Popup"]
 position = Vector2i(500, 101)
 size = Vector2i(600, 600)
+visible = true
 script = ExtResource("1_t46uk")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -28,7 +29,7 @@ grow_vertical = 2
 [node name="Video" type="TabBar" parent="SettinTabs"]
 layout_mode = 2
 theme = ExtResource("1_q84a3")
-theme_override_fonts/font = ExtResource("3_vopte")
+theme_override_fonts/font = ExtResource("3_mldv0")
 
 [node name="MarginContainer" type="MarginContainer" parent="SettinTabs/Video"]
 layout_mode = 1
@@ -100,7 +101,7 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 theme = ExtResource("1_q84a3")
-theme_override_fonts/font = ExtResource("3_vopte")
+theme_override_fonts/font = ExtResource("3_mldv0")
 
 [node name="MarginContainer" type="MarginContainer" parent="SettinTabs/Audio"]
 layout_mode = 1
@@ -161,7 +162,7 @@ value = -10.0
 visible = false
 layout_mode = 2
 theme = ExtResource("1_q84a3")
-theme_override_fonts/font = ExtResource("3_vopte")
+theme_override_fonts/font = ExtResource("3_mldv0")
 
 [node name="MarginContainer" type="MarginContainer" parent="SettinTabs/Gameplay"]
 layout_mode = 1
@@ -179,7 +180,24 @@ theme_override_constants/margin_bottom = 25
 layout_mode = 2
 columns = 2
 
+[node name="Language" type="Label" parent="SettinTabs/Gameplay/MarginContainer/GameSettings"]
+layout_mode = 2
+text = "Language"
+
+[node name="LaguageOptionButton" type="OptionButton" parent="SettinTabs/Gameplay/MarginContainer/GameSettings"]
+layout_mode = 2
+size_flags_horizontal = 10
+item_count = 3
+selected = 0
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Español"
+popup/item_1/id = 1
+popup/item_2/text = "日本語"
+popup/item_2/id = 2
+
 [node name="null" type="Label" parent="SettinTabs/Gameplay/MarginContainer/GameSettings"]
+visible = false
 layout_mode = 2
 text = "Nothing yet :)"
 
@@ -190,3 +208,4 @@ text = "Nothing yet :)"
 [connection signal="value_changed" from="SettinTabs/Audio/MarginContainer/AudioSettings/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
 [connection signal="value_changed" from="SettinTabs/Audio/MarginContainer/AudioSettings/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="SettinTabs/Audio/MarginContainer/AudioSettings/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="item_selected" from="SettinTabs/Gameplay/MarginContainer/GameSettings/LaguageOptionButton" to="." method="_on_laguage_option_button_item_selected"]

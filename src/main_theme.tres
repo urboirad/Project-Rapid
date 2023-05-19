@@ -1,8 +1,13 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://r7pa3bx4t8xj"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bv6ucyhl2e1we"]
 
-[ext_resource type="FontFile" uid="uid://dyhsg2j4272wr" path="res://ethnocentric rg.otf" id="1_saoqx"]
+[ext_resource type="FontFile" uid="uid://dkdinr6tryrkw" path="res://Fonts/DelaGothicOne-Regular.ttf" id="2_0nemu"]
+[ext_resource type="FontFile" uid="uid://dyhsg2j4272wr" path="res://Fonts/ethnocentric rg.otf" id="2_enloo"]
+
+[sub_resource type="FontVariation" id="FontVariation_gix6w"]
+base_font = ExtResource("2_enloo")
+fallbacks = Array[Font]([ExtResource("2_0nemu")])
 
 [resource]
-default_font = ExtResource("1_saoqx")
-Fonts/fonts/large = ExtResource("1_saoqx")
-Fonts/fonts/normal = ExtResource("1_saoqx")
+default_font = SubResource("FontVariation_gix6w")
+Fonts/fonts/large = ExtResource("2_enloo")
+Fonts/fonts/normal = ExtResource("2_enloo")
