@@ -42,6 +42,19 @@ var start_fall = false
 var start_crouch = false
 
 var charge_jumping = false
+var charge_amount = 0
+var charge_speed = 5
+var max_jump_force = -270
+
+# Sounds
+@onready var sfx_boost = $sfx_boost
+@onready var sfx_charge = $sfx_charge
+@onready var sfx_jump = $sfx_jump
+@onready var sfx_jumpCharge = $sfx_jumpCharge
+@onready var sfx_pickup = $sfx_pickup
+@onready var sfx_pickupSpecial = $sfx_pickupSpecial
+
+var state = 0
 
 func _ready():
 	pass
@@ -61,16 +74,22 @@ func _physics_process(delta):
 	
 	# Left and Right Input
 	var input = Vector2.ZERO
-	if !start_crouch:
+	if !start_crouch or !charge_jumping:
 		input.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	if input.x == 0 or start_crouch:
+	if input.x == 0 or start_crouch or charge_jumping:
 		apply_friction() # Applies friction to player
 	else:
 		apply_acceleration(input.x) # Applies acceleration to player
 	
 	# Jump input
-	if is_on_floor():
-		if Input.is_action_just_pressed("jump"):
+	if is_on_floor_only():
+		if Input.is_action_just_released("jump") && charge_jumping && Input.is_action_pressed("down") or charge_jumping && Input.is_action_just_released("down"):
+			sfx_jumpCharge.play()
+			velocity.y = charge_amount
+			charge_jumping = false
+			start_crouch = false
+		elif Input.is_action_just_pressed("jump") && !charge_jumping && !Input.is_action_pressed("down"):
+			sfx_jump.play()
 			jump()
 	else:
 		if Input.is_action_just_released("jump") and velocity.y < JUMP_RELEASE_FORCE:
@@ -117,9 +136,38 @@ func _physics_process(delta):
 			jump()
 		
 	move_and_slide()
+	
+	if state == 0:
+		$AnimatedSprite2D.self_modulate.r = 1
+		$AnimatedSprite2D.self_modulate.g = 1
+		$AnimatedSprite2D.self_modulate.b = 1
+	if state == 1:
+		$AnimatedSprite2D.self_modulate.r = 100
+		$AnimatedSprite2D.self_modulate.g = 100
+		$AnimatedSprite2D.self_modulate.b = 100
 		
+	if Input.is_action_pressed("jump") && Input.is_action_pressed("down"):
+		sfx_charge.play()
+		if $FlashTimer.timeout && state == 0:
+			state = 1
+		elif $FlashTimer.timeout && state == 1:
+			state = 0
+		charge_jumping = true
+	else:
+		state = 0
+		charge_jumping = false
+	
 	if charge_jumping:
-		pass
+		if charge_amount > max_jump_force:
+			charge_amount -= charge_speed
+	else:
+		if charge_amount < 0:
+			charge_amount += charge_speed
+			
+	if !charge_jumping:
+		FRICTION = 40
+	else:
+		FRICTION = 5
 			
 func jump(): # Jump function dummy
 	velocity.y = JUMP_FORCE
@@ -127,6 +175,7 @@ func jump(): # Jump function dummy
 func dash(delta):
 	if !hasDashed:
 		if Input.is_action_just_pressed("dash"):
+			sfx_boost.play()
 			velocity = axis * dash_speed * delta
 			spriteColor = "blue"
 			Input.start_joy_vibration(0, 1, 1, 0.2)
@@ -154,95 +203,98 @@ func wallJump(): # Wall bounce function
 		velocity.x = velocity.x - dash_speed # Make player bounce off
 
 func animations(): # Animation update
-	if Input.is_action_pressed("right"):
-		Anim.flip_h = false
-	elif Input.is_action_pressed("left"):
-		Anim.flip_h = true
-	# Right...
-	if Input.is_action_pressed("right") && !Input.is_action_pressed("left"):
-		# Activate Skid Animation
-		reverse_to_left = true
-		
-		if is_on_floor():
-			# Walk Animation
-			if reverse_to_right == false && velocity.x < 200: # If speed is less than run speed...
-				if !start_crouch:
-					Anim.play("Walk")
-			# Skid Animation
-			elif reverse_to_right == true && velocity.x < -60: # If skidding...
-				if !start_crouch:
-					Anim.play("Skid")
-			else: # If run speed...
-				if !start_crouch:
-					Anim.play("Run")
-	# Left
-	if Input.is_action_pressed("left") && !Input.is_action_pressed("right"):
-		# Activate Skid Animation
-		reverse_to_right = true
-		
-		if is_on_floor():
-			# Walk Animation
-			if reverse_to_left == false && velocity.x > -200: # If speed is less than run speed...
-				if !start_crouch:
-					Anim.play("Walk")
-			# Skid Animation
-			elif reverse_to_left == true && velocity.x > 60: # If skidding...
-				if !start_crouch:
-					Anim.play("Skid")
-			else: # If run speed...
-				if !start_crouch:
-					Anim.play("Run")
+	if !charge_jumping:
+		if Input.is_action_pressed("right"):
+			Anim.flip_h = false
+		elif Input.is_action_pressed("left"):
+			Anim.flip_h = true
+		# Right...
+		if Input.is_action_pressed("right") && !Input.is_action_pressed("left"):
+			# Activate Skid Animation
+			reverse_to_left = true
+			
+			if is_on_floor():
+				# Walk Animation
+				if reverse_to_right == false && velocity.x < 200: # If speed is less than run speed...
+					if !start_crouch:
+						Anim.play("Walk")
+				# Skid Animation
+				elif reverse_to_right == true && velocity.x < -60: # If skidding...
+					if !start_crouch:
+						Anim.play("Skid")
+				else: # If run speed...
+					if !start_crouch:
+						Anim.play("Run")
+		# Left
+		if Input.is_action_pressed("left") && !Input.is_action_pressed("right"):
+			# Activate Skid Animation
+			reverse_to_right = true
+			
+			if is_on_floor():
+				# Walk Animation
+				if reverse_to_left == false && velocity.x > -200: # If speed is less than run speed...
+					if !start_crouch:
+						Anim.play("Walk")
+				# Skid Animation
+				elif reverse_to_left == true && velocity.x > 60: # If skidding...
+					if !start_crouch:
+						Anim.play("Skid")
+				else: # If run speed...
+					if !start_crouch:
+						Anim.play("Run")
 
-	# Deactivate Skid Animation
-	if Input.is_action_just_released("right"):
-		reverse_to_right = false
-	if Input.is_action_just_released("left"):
-		reverse_to_left = false
-	
-	if is_on_floor():
+		# Deactivate Skid Animation
+		if Input.is_action_just_released("right"):
+			reverse_to_right = false
+		if Input.is_action_just_released("left"):
+			reverse_to_left = false
 		
-		# Fall Transition Animation
-		if start_fall == false:
-			start_fall = true
+		if is_on_floor():
 			
-		# Crouch Transition Animation
-		#if start_crouch == false:
-			#start_crouch = true
-			
-		# Idle Animation
-		if velocity.x == 0 && !start_crouch: 
-			Anim.play("Idle")
-			
-		# Run Aniamtion
-		if Input.is_action_just_released("right") or Input.is_action_just_released("left"):
-			starting_run = true
-		
-		# Crouch Animation
-		if Input.is_action_pressed("down"):
-			start_crouch = true
-		elif Input.is_action_just_released("down"):
-			start_crouch = false
-			
-		if start_crouch == true:
-			Anim.play("Crouch")
-			
-	else:
-		# Jump Animation
-		if velocity.y < 0:
-			Anim.play("Jump")
-			
-		# Fall Animation
-		elif velocity.y > 0:
-			if start_fall == true:
-				Anim.play("toFall")
-			elif start_fall == false:
-				Anim.play("Fall") # Falling
+			# Fall Transition Animation
+			if start_fall == false:
+				start_fall = true
 				
-	# Match Anim Speed
-	if velocity.x >= 300 or velocity.x <= -300:
-		Anim.speed_scale = lerp(Anim.speed_scale, 2.0, 0.01)
+			# Crouch Transition Animation
+			#if start_crouch == false:
+				#start_crouch = true
+				
+			# Idle Animation
+			if velocity.x == 0 && !start_crouch: 
+				Anim.play("Idle")
+				
+			# Run Aniamtion
+			if Input.is_action_just_released("right") or Input.is_action_just_released("left"):
+				starting_run = true
+			
+			# Crouch Animation
+			if Input.is_action_pressed("down"):
+				start_crouch = true
+			elif Input.is_action_just_released("down"):
+				start_crouch = false
+				
+			if start_crouch == true:
+				Anim.play("Crouch")
+				
+		else:
+			# Jump Animation
+			if velocity.y < 0:
+				Anim.play("Jump")
+				
+			# Fall Animation
+			elif velocity.y > 0:
+				if start_fall == true:
+					Anim.play("toFall")
+				elif start_fall == false:
+					Anim.play("Fall") # Falling
+					
+		# Match Anim Speed
+		if velocity.x >= 300 or velocity.x <= -300:
+			Anim.speed_scale = lerp(Anim.speed_scale, 2.0, 0.01)
+		else:
+			Anim.speed_scale = 1
 	else:
-		Anim.speed_scale = 1
+		Anim.play("Crouch")
 
 # Physics stuff...
 func apply_gravity():
@@ -314,7 +366,7 @@ func rotateSprite():
 
 # Fall Limit
 func _on_Fall_limit_area_entered(area):
-	get_tree().reload_current_scene()
+	SceneTransition.quick_fade("res://World.tscn")
 
 # Debug
 func debugText():
@@ -325,6 +377,9 @@ func debugText():
 	$DebugText/PlayerYvel.text = "Player Y-Vel: " + str(curYvel)
 	$DebugText/PlayerAngle.text = "Player Angle: " + str(curRotation)
 	$DebugText/Crouching.text = "Player Angle: " + str(curRotation)
+	$DebugText/CurFPS.text = "Charge: " + str(charge_amount)
+	#$DebugText/FramesDrawn.text = "Frames Drawn: " + str(Engine.get_frames_drawn())
+	$DebugText/FramesDrawn.text = "Charging: " + str(charge_jumping)
 
 func _on_trail_timer_timeout():
 	if trail:

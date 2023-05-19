@@ -1,9 +1,15 @@
-[gd_scene load_steps=32 format=3 uid="uid://7y18g7xxsba8"]
+[gd_scene load_steps=38 format=3 uid="uid://7y18g7xxsba8"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bj2lwjk2kqnnw" path="res://Assets/Player/Player.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://64sosbupuu77" path="res://SFX/Player/Boost.wav" id="5_1hcpt"]
+[ext_resource type="AudioStream" uid="uid://0hddhxn7ofn1" path="res://SFX/Player/Charge.wav" id="6_cbxwa"]
+[ext_resource type="AudioStream" uid="uid://woi81hu2tnmx" path="res://SFX/Player/Jump.wav" id="7_jndcq"]
+[ext_resource type="AudioStream" uid="uid://d3018kibc3fgx" path="res://SFX/Player/Jump_Charge.wav" id="8_mpg5g"]
+[ext_resource type="AudioStream" uid="uid://b5us2cwafs4ld" path="res://SFX/Player/Pickup.wav" id="9_uvtlg"]
+[ext_resource type="AudioStream" uid="uid://crxacw0eqcxi4" path="res://SFX/Player/Pickup_Special.wav" id="10_rl2sv"]
 [ext_resource type="PackedScene" uid="uid://cvo4k6qneyjmh" path="res://Scenes/Dash.tscn" id="22"]
-[ext_resource type="PackedScene" path="res://Scenes/DebugText.tscn" id="42"]
+[ext_resource type="PackedScene" uid="uid://cc1y7t7ketwv0" path="res://Scenes/DebugText.tscn" id="42"]
 
 [sub_resource type="RectangleShape2D" id="34"]
 size = Vector2(16, 21)
@@ -306,6 +312,36 @@ position_smoothing_enabled = true
 
 [node name="trailTimer" type="Timer" parent="."]
 wait_time = 0.08
+autostart = true
+
+[node name="sfx_boost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1hcpt")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="sfx_charge" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cbxwa")
+bus = &"SFX"
+
+[node name="sfx_jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_jndcq")
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="sfx_jumpCharge" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_mpg5g")
+bus = &"SFX"
+
+[node name="sfx_pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_uvtlg")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="sfx_pickupSpecial" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_rl2sv")
+bus = &"SFX"
+
+[node name="FlashTimer" type="Timer" parent="."]
 autostart = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]

@@ -12,5 +12,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	$CurFPS.text = "FPS: " + str(Engine.get_frames_per_second())
-	$FramesDrawn.text = "Frames Drawn: " + str(Engine.get_frames_drawn())
+	pass

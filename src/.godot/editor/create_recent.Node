@@ -1,9 +1,11 @@
+Timer
+Sprite2D
+ColorRect
+AudioStreamPlayer
 Node2D
 AnimationPlayer
 AnimationTree
-ColorRect
 CanvasLayer
-AudioStreamPlayer
 Label
 HSlider
 HBoxContainer
@@ -16,7 +18,6 @@ TabContainer
 Control
 Popup
 PopupPanel
-Sprite2D
 TextureRect
 Node3D
 Sprite3D
@@ -30,4 +31,3 @@ SubViewport
 SubViewportContainer
 Button
 VBoxContainer
-Timer

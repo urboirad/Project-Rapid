@@ -1,19 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://cc1y7t7ketwv0"]
 
-[ext_resource path="res://Scripts/DebugText.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://Scripts/DebugText.gd" id="1"]
 
 [node name="DebugText" type="CanvasLayer"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="CurFPS" type="Label" parent="."]
+offset_top = 148.0
 offset_right = 240.0
-offset_bottom = 16.0
-text = "FPS"
+offset_bottom = 174.0
+text = "Charge"
 
 [node name="FramesDrawn" type="Label" parent="."]
-offset_top = 16.0
+offset_top = 128.0
 offset_right = 240.0
-offset_bottom = 32.0
+offset_bottom = 154.0
 text = "Frames Drawn"
 
 [node name="PlayerXvel" type="Label" parent="."]

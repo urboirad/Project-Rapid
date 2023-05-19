@@ -9,8 +9,9 @@
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2")]
-position = Vector2(432, 480)
+position = Vector2(859, 340)
 MAX_SPEED = 300
+FRICTION = 30
 
 [node name="Fall_limit" parent="." instance=ExtResource("4")]
 z_index = 1
@@ -27,6 +28,7 @@ zoom = Vector2(0.2, 0.2)
 
 [node name="TrainingMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ah53i")
+volume_db = -10.0
 autoplay = true
 bus = &"Music"
 

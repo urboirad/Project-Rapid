@@ -15,6 +15,7 @@ var sfxPlay = false
 
 @onready var settings_menu = $SettingsMenu
 
+@onready var selction = $Control/ControllerSelction
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -27,7 +28,7 @@ func _process(delta):
 		music.stream_paused = true
 		if !sfx_accept.playing:
 			sfx_accept.play(0.0)
-		SceneTransition.change_scene("res://World.tscn")
+		SceneTransition.fade("res://World.tscn")
 			
 	if settingsButton.button_pressed:
 		if !sfx_select.playing:
@@ -38,9 +39,7 @@ func _process(delta):
 		music.stream_paused = true
 		if !sfx_exit.playing:
 			sfx_exit.play(0.0)
-	
-	if sfx_exit.get_playback_position() > 2.54:
-		get_tree().quit()
+		SceneTransition.quit_game()
 		
 
 func _on_start_button_mouse_entered():
