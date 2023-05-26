@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
+var energy = 100
+
 # Nodes
 @onready var hitbox = $Hitbox
 @onready var Anim = $AnimatedSprite2D
-#@onready var dash = $Dash
 @onready var wallCast = $WallDetector
 @onready var floorCast = $floorDetect
 @onready var slopeCast = $slopeDetect
@@ -53,6 +54,7 @@ var max_jump_force = -270
 @onready var sfx_jumpCharge = $sfx_jumpCharge
 @onready var sfx_pickup = $sfx_pickup
 @onready var sfx_pickupSpecial = $sfx_pickupSpecial
+@onready var sfx_spring = $sfx_spring
 
 var state = 0
 
@@ -174,7 +176,8 @@ func jump(): # Jump function dummy
 
 func dash(delta):
 	if !hasDashed:
-		if Input.is_action_just_pressed("dash"):
+		if Input.is_action_just_pressed("dash") && GlobalVariables.player_energy > 0:
+			GlobalVariables.player_energy -= 20
 			sfx_boost.play()
 			velocity = axis * dash_speed * delta
 			spriteColor = "blue"
@@ -398,3 +401,12 @@ func _on_trail_timer_timeout():
 		trail_sprite.position.y = trail_sprite.position.y + 15
 		trail_sprite.modulate = Color( 1, 0.08, 0.58, 0.5 )
 		trail_sprite.z_index = -49
+
+
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("spring"):
+		sfx_spring.play()
+		velocity.y = -260
+	if area.is_in_group("carro"):
+		sfx_pickup.play()
+		pass

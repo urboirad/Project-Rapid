@@ -30,13 +30,14 @@ config/windows_native_icon="res://pRicon.ico"
 Global="*res://Scripts/global.gd"
 SceneTransition="*res://Scenes/scene_transition.tscn"
 DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
+GlobalVariables="*res://Scripts/global_variables.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/size/borderless=true
-window/stretch/mode="2d"
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 

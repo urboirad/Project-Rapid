@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://7y18g7xxsba8"]
+[gd_scene load_steps=39 format=3 uid="uid://7y18g7xxsba8"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bj2lwjk2kqnnw" path="res://Assets/Player/Player.png" id="2"]
@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://woi81hu2tnmx" path="res://SFX/Player/Jump.wav" id="7_jndcq"]
 [ext_resource type="AudioStream" uid="uid://d3018kibc3fgx" path="res://SFX/Player/Jump_Charge.wav" id="8_mpg5g"]
 [ext_resource type="AudioStream" uid="uid://b5us2cwafs4ld" path="res://SFX/Player/Pickup.wav" id="9_uvtlg"]
-[ext_resource type="AudioStream" uid="uid://crxacw0eqcxi4" path="res://SFX/Player/Pickup_Special.wav" id="10_rl2sv"]
+[ext_resource type="AudioStream" uid="uid://dutigd31wiufa" path="res://SFX/Spring.wav" id="10_mjm4w"]
 [ext_resource type="PackedScene" uid="uid://cvo4k6qneyjmh" path="res://Scenes/Dash.tscn" id="22"]
 [ext_resource type="PackedScene" uid="uid://cc1y7t7ketwv0" path="res://Scenes/DebugText.tscn" id="42"]
 
@@ -33,6 +33,10 @@ region = Rect2(576, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="36"]
 atlas = ExtResource("2")
 region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1lwl"]
+atlas = ExtResource("2")
+region = Rect2(416, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="37"]
 atlas = ExtResource("2")
@@ -139,11 +143,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_s1lwl")
+}, {
+"duration": 9.22337e+18,
 "texture": SubResource("37")
 }],
-"loop": true,
+"loop": false,
 "name": &"Fall",
-"speed": 7.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -256,7 +263,7 @@ FRICTION = 40
 [node name="Dash" parent="." instance=ExtResource("22")]
 position = Vector2(1, 17)
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["player"]]
 
 [node name="AreaShape" type="CollisionShape2D" parent="Hitbox"]
 modulate = Color(1, 0, 0, 1)
@@ -295,8 +302,7 @@ target_position = Vector2(-27, 0)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 20)
 sprite_frames = SubResource("23")
-animation = &"Idle"
-frame_progress = 0.128111
+animation = &"Fall"
 offset = Vector2(0, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -309,6 +315,7 @@ limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="DebugText" parent="." instance=ExtResource("42")]
+visible = false
 
 [node name="trailTimer" type="Timer" parent="."]
 wait_time = 0.08
@@ -338,11 +345,16 @@ volume_db = -20.0
 bus = &"SFX"
 
 [node name="sfx_pickupSpecial" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_rl2sv")
+stream = ExtResource("10_mjm4w")
+bus = &"SFX"
+
+[node name="sfx_spring" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_mjm4w")
 bus = &"SFX"
 
 [node name="FlashTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="trailTimer" to="." method="_on_trail_timer_timeout"]

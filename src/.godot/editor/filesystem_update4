@@ -1,12 +1,15 @@
 res://default_env.tres
-res://Scenes/menu.tscn
 res://main_theme.tres
 res://Tilesets/Test.tres
-res://World.tscn
+res://Scripts/spring.gd
+res://Scenes/spring.tscn
+res://Scripts/Player.gd
 res://Scenes/Player.tscn
-res://Scenes/settings_menu.tscn
-res://Scripts/global.gd
-res://Scripts/settings_menu.gd
-res://roject Rapid '23 Translation.en.translation
-res://roject Rapid '23 Translation.sp.translation
-res://roject Rapid '23 Translation.ja.translation
+res://Scenes/menu.tscn
+res://World.tscn
+res://Scenes/scene_transition.tscn
+res://Scenes/ui.tscn
+res://Scripts/global_variables.gd
+res://Scripts/ui.gd
+res://Scripts/Carro.gd
+res://Scenes/carro.tscn
