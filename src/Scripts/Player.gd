@@ -148,7 +148,7 @@ func _physics_process(delta):
 		$AnimatedSprite2D.self_modulate.g = 100
 		$AnimatedSprite2D.self_modulate.b = 100
 		
-	if Input.is_action_pressed("jump") && Input.is_action_pressed("down"):
+	if Input.is_action_pressed("jump") && Input.is_action_pressed("down") && is_on_floor():
 		sfx_charge.play()
 		if $FlashTimer.timeout && state == 0:
 			state = 1

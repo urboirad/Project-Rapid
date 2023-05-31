@@ -1,10 +1,10 @@
+CollisionShape2D
+Area2D
+AnimatedSprite2D
 AudioStreamPlayer2D
 AudioStreamPlayer
 Node2D
 AnimationPlayer
-CollisionShape2D
-Area2D
-AnimatedSprite2D
 VBoxContainer
 MarginContainer
 CenterContainer
@@ -30,4 +30,3 @@ TextureRect
 Node3D
 Sprite3D
 DirectionalLight3D
-WorldEnvironment
