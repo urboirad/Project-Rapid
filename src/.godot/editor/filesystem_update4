@@ -2,10 +2,11 @@ res://default_env.tres
 res://Scenes/menu.tscn
 res://main_theme.tres
 res://Tilesets/Test.tres
-res://Scripts/menu.gd
 res://World.tscn
 res://Scenes/Player.tscn
 res://Scenes/scene_transition.tscn
 res://Scenes/ui.tscn
 res://Scenes/carro.tscn
 res://Scenes/spring.tscn
+res://Scripts/ui.gd
+res://Scripts/Player.gd
