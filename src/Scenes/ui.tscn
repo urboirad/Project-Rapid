@@ -1,8 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4fxgtohrqei"]
+[gd_scene load_steps=19 format=3 uid="uid://c4fxgtohrqei"]
 
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_2jxce"]
 [ext_resource type="Theme" uid="uid://bv6ucyhl2e1we" path="res://main_theme.tres" id="2_g1dkx"]
 [ext_resource type="Texture2D" uid="uid://b2xpfxx7sxh37" path="res://Assets/EnergyBar.png" id="3_wnwi7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swr0s"]
+bg_color = Color(0.207843, 0.207843, 0.207843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tv55c"]
+bg_color = Color(0.992157, 0.796078, 0.690196, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ovxmf"]
 atlas = ExtResource("3_wnwi7")
@@ -152,9 +158,11 @@ layout_mode = 2
 offset_left = -8.0
 offset_top = 672.0
 offset_right = 344.0
-offset_bottom = 687.0
+offset_bottom = 688.0
 theme = ExtResource("2_g1dkx")
-value = 100.0
+theme_override_styles/background = SubResource("StyleBoxFlat_swr0s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tv55c")
+value = 70.0
 show_percentage = false
 
 [node name="EnergyBarBack" type="AnimatedSprite2D" parent="."]

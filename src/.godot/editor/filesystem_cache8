@@ -1,8 +1,8 @@
 2a60927148abd1d33b818b535e306557
-::res://::1685640404
+::res://::1686348187
 Dark-Red-Wallpaper-Desktop-Aesthetic-Comitatofesteteolo.xyz-1.png::CompressedTexture2D::2048589646638898286::1683829964::1683829966::1::::<><>::
 default_bus_layout.tres::AudioBusLayout::3343763155364074410::1684194153::0::1::::<><>::
-default_env.tres::Environment::382564550578128600::1685640404::0::1::::<><>::
+default_env.tres::Environment::382564550578128600::1685646081::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1684514733::0::1::::<><>::
 LogoFullHD.png::CompressedTexture2D::5349085529129520618::1683825446::1683826774::1::::<><>::
 LogoFullLowRes.png::CompressedTexture2D::6062032256060733436::1683496680::1683496680::1::::<><>::
@@ -18,7 +18,7 @@ roject Rapid '23 Translation.en.translation::OptimizedTranslation::4647394132265
 roject Rapid '23 Translation.ja.translation::OptimizedTranslation::5234664624598046391::1684536446::0::1::::<><>::
 roject Rapid '23 Translation.sp.translation::OptimizedTranslation::6619490880285971202::1684536446::0::1::::<><>::
 whiten_material.tres::Shader::-1::1683496680::0::1::::<><>::
-World.tscn::PackedScene::8131847740864530846::1685640404::0::1::::<><>::uid://doa5s17wqrjve<>uid://7y18g7xxsba8<>res://Scenes/Fall Limit.tscn<>res://Scripts/TestCam.gd<>uid://hjrmin10dij5<>uid://dkwrgwa2lse5s<>uid://cg3gscx7xhrby<>uid://c4fxgtohrqei<>uid://daq33svi7bq6i
+World.tscn::PackedScene::8131847740864530846::1685646081::0::1::::<><>::uid://doa5s17wqrjve<>uid://7y18g7xxsba8<>res://Scenes/Fall Limit.tscn<>res://Scripts/TestCam.gd<>uid://hjrmin10dij5<>uid://dkwrgwa2lse5s<>uid://cg3gscx7xhrby<>uid://c4fxgtohrqei<>uid://daq33svi7bq6i
 ::res://addons/::1684517064
 ::res://addons/discord-sdk-gd/::1684513947
 discord-rpc-gd.gdextension::GDExtension::-1::1684513946::0::1::::<><>::
@@ -126,16 +126,16 @@ Project Rapid - Frontier Foothills.wav::AudioStreamWAV::8078538149297526190::168
 Project Rapid - Menu.wav::AudioStreamWAV::6368920577852506014::1683824897::1683824898::1::::<><>::
 Project Rapid - Results.wav::AudioStreamWAV::1419753419931275755::1684873657::1684873659::1::::<><>::
 Project Rapid - Tutorial.wav::AudioStreamWAV::510955365140768792::1683824897::1684463470::1::::<><>::
-::res://Scenes/::1685640404
-carro.tscn::PackedScene::7194043151438557998::1685640404::0::1::::<><>::uid://qx3yyur7i3t7<>res://Scripts/Carro.gd
+::res://Scenes/::1685646081
+carro.tscn::PackedScene::7194043151438557998::1685646081::0::1::::<><>::uid://qx3yyur7i3t7<>res://Scripts/Carro.gd
 Dash.tscn::PackedScene::6277488676608680547::1683496680::0::1::::<><>::res://Scripts/Dash.gd
 DashGhost.tscn::PackedScene::6105262020320236352::1683496680::0::1::::<><>::res://Scripts/DashGhost.gd
 DebugText.tscn::PackedScene::4968408277337039443::1684352179::0::1::::<><>::res://Scripts/DebugText.gd
 Fall Limit.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Scripts/Fall Limit.gd
 fps_label.tscn::PackedScene::7907610858445273790::1684200776::0::1::::<><>::uid://r7pa3bx4t8xj<>res://Scripts/fps_label.gd
-menu.tscn::PackedScene::2568660013530004849::1685640404::0::1::::<><>::res://Scripts/menu.gd<>uid://cihewlw08338i<>uid://bv6ucyhl2e1we<>res://menu.gdshader<>uid://cw0fgrjbd5q75<>uid://4gl8b3pyveru<>res://Scripts/2dLogoRotate.gd<>uid://bke4rotccdx3p<>uid://c1ggdq8mok2ko<>uid://v6o0avnkxy0i<>uid://berocfpgtpg03<>uid://p13iwbpwchff<>uid://b3w30g2cihos3<>uid://dkwrgwa2lse5s
-Player.tscn::PackedScene::2297226001175561861::1685640404::0::1::::<><>::res://Scripts/Player.gd<>uid://bj2lwjk2kqnnw<>uid://64sosbupuu77<>uid://0hddhxn7ofn1<>uid://woi81hu2tnmx<>uid://d3018kibc3fgx<>uid://b5us2cwafs4ld<>uid://dutigd31wiufa<>uid://cvo4k6qneyjmh<>uid://cc1y7t7ketwv0
-scene_transition.tscn::PackedScene::5334080843130706799::1685640404::0::1::::<><>::res://Scripts/scene_transition.gd
+menu.tscn::PackedScene::2568660013530004849::1685646081::0::1::::<><>::res://Scripts/menu.gd<>uid://cihewlw08338i<>uid://bv6ucyhl2e1we<>res://menu.gdshader<>uid://cw0fgrjbd5q75<>uid://4gl8b3pyveru<>res://Scripts/2dLogoRotate.gd<>uid://bke4rotccdx3p<>uid://c1ggdq8mok2ko<>uid://v6o0avnkxy0i<>uid://berocfpgtpg03<>uid://p13iwbpwchff<>uid://b3w30g2cihos3<>uid://dkwrgwa2lse5s
+Player.tscn::PackedScene::2297226001175561861::1685646081::0::1::::<><>::res://Scripts/Player.gd<>uid://bj2lwjk2kqnnw<>uid://64sosbupuu77<>uid://0hddhxn7ofn1<>uid://woi81hu2tnmx<>uid://d3018kibc3fgx<>uid://b5us2cwafs4ld<>uid://dutigd31wiufa<>uid://cvo4k6qneyjmh<>uid://cc1y7t7ketwv0
+scene_transition.tscn::PackedScene::5334080843130706799::1685646081::0::1::::<><>::res://Scripts/scene_transition.gd
 settings_menu.tscn::PackedScene::4398869693744079856::1684536730::0::1::::<><>::uid://bv6ucyhl2e1we<>res://Scripts/settings_menu.gd<>uid://dyhsg2j4272wr
 Slope_Left2.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureSlope6.png
 Slope_Left.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureSlope1.png
@@ -145,13 +145,13 @@ Slope_Right2.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/Proto
 Slope_Right.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureSlope2.png
 Slope_Right_Steep2.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureSlope7.png
 Slope_Right_Steep.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureSlope4.png
-spring.tscn::PackedScene::5252173594637123046::1685640404::0::1::::<><>::uid://ciw0qemhdi00<>res://Scripts/spring.gd
+spring.tscn::PackedScene::5252173594637123046::1685646081::0::1::::<><>::uid://ciw0qemhdi00<>res://Scripts/spring.gd
 Test Tileset.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Scenes/Slope_Right_Steep.tscn<>res://Scenes/Wall.tscn<>res://Scenes/WallHalfTop.tscn<>res://Scenes/Slope_Left.tscn<>res://Scenes/Slope_Left_Steep.tscn<>res://Scenes/Slope_Right.tscn<>res://Scenes/Slope_Left_Steep2.tscn<>res://Scenes/Slope_Right_Steep2.tscn<>res://Scenes/Slope_Right2.tscn<>res://Scenes/Slope_Left2.tscn<>res://Scenes/WallHalfBot.tscn
-ui.tscn::PackedScene::200589645504965064::1685640404::0::1::::<><>::res://Scripts/ui.gd<>uid://bv6ucyhl2e1we
+ui.tscn::PackedScene::200589645504965064::1685646081::0::1::::<><>::res://Scripts/ui.gd<>uid://bv6ucyhl2e1we<>uid://b2xpfxx7sxh37
 Wall.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTexture1.png
 WallHalfBot.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureHalf2.png
 WallHalfTop.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureHalf1.png
-::res://Scripts/::1685551856
+::res://Scripts/::1685646081
 2dLogoRotate.gd::GDScript::-1::1684170653::0::1::::<>Sprite2D<>::
 3DLogo.gd::GDScript::-1::1683842707::0::1::::<>Sprite3D<>::
 Carro.gd::GDScript::-1::1685069149::0::1::::<>AnimatedSprite2D<>::
@@ -167,13 +167,13 @@ Hands.gd::GDScript::-1::1683496680::0::1::::<>AnimatedSprite2D<>::
 Hitbox.gd::GDScript::-1::1683496680::0::1::::<>Node2D<>::
 menu.gd::GDScript::-1::1685551856::0::1::::<>Node2D<>::
 Player(Old).gd::GDScript::-1::1683496680::0::1::::<>CharacterBody2D<>::
-Player.gd::GDScript::-1::1685550756::0::1::::<>CharacterBody2D<>::
+Player.gd::GDScript::-1::1685646081::0::1::::<>CharacterBody2D<>::
 scene_transition.gd::GDScript::-1::1684454086::0::1::::<>CanvasLayer<>::
 settings_menu.gd::GDScript::-1::1684536203::0::1::::<>Popup<>::
 spring.gd::GDScript::-1::1685069313::0::1::::<>AnimatedSprite2D<>::
 TestCam.gd::GDScript::-1::1684538379::0::1::::<>Camera2D<>::
 trail_fade.gd::GDScript::-1::1683496680::0::1::::<>Sprite2D<>::
-ui.gd::GDScript::-1::1684986673::0::1::::<>Control<>::
+ui.gd::GDScript::-1::1685643682::0::1::::<>Control<>::
 ::res://SFX/::1684943437
 Spring.wav::AudioStreamWAV::8602758753908279898::1684943393::1684943437::1::::<><>::
 ::res://SFX/Menu/::1684200660

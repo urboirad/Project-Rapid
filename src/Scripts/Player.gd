@@ -59,7 +59,7 @@ var max_jump_force = -270
 var state = 0
 
 func _ready():
-	pass
+	GlobalVariables.player_energy = 100
 	
 func _physics_process(delta):
 	

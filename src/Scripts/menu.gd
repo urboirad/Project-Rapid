@@ -73,12 +73,15 @@ func _process(delta):
 		
 
 func _on_start_button_mouse_entered():
+	cur_option = 1
 	sfx_hover.play(0.0)
 
 func _on_settings_button_mouse_entered():
+	cur_option = 2
 	sfx_hover.play(0.0)
 
 func _on_quit_button_mouse_entered():
+	cur_option = 3
 	sfx_hover.play(0.0)
 
 
