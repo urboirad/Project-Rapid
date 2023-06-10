@@ -7,6 +7,9 @@ var seconds = 0.0
 var milliseconds = 0.0
 var timeLabel = ""
 
+# Energy Bar
+@onready var energyBarAnim = $EnergyBarBack
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -17,6 +20,11 @@ func _process(delta):
 	# Energy Bar
 	var energyBar = $EnergyBar
 	energyBar.value = GlobalVariables.player_energy
+	
+	if GlobalVariables.player_energy > 0:
+		energyBarAnim.play("default")
+	else:
+		energyBarAnim.play("drained")
 	
 	# Timer
 	time_elapsed += delta

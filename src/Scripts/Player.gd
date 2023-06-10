@@ -59,7 +59,7 @@ var max_jump_force = -270
 var state = 0
 
 func _ready():
-	pass
+	GlobalVariables.player_energy = 100
 	
 func _physics_process(delta):
 	
@@ -90,6 +90,7 @@ func _physics_process(delta):
 			velocity.y = charge_amount
 			charge_jumping = false
 			start_crouch = false
+			GlobalVariables.player_energy -= 40
 		elif Input.is_action_just_pressed("jump") && !charge_jumping && !Input.is_action_pressed("down"):
 			sfx_jump.play()
 			jump()
@@ -148,7 +149,7 @@ func _physics_process(delta):
 		$AnimatedSprite2D.self_modulate.g = 100
 		$AnimatedSprite2D.self_modulate.b = 100
 		
-	if Input.is_action_pressed("jump") && Input.is_action_pressed("down") && is_on_floor():
+	if Input.is_action_pressed("jump") && Input.is_action_pressed("down") && is_on_floor() && GlobalVariables.player_energy > 0:
 		sfx_charge.play()
 		if $FlashTimer.timeout && state == 0:
 			state = 1

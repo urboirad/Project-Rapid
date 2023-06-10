@@ -1,7 +1,121 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4fxgtohrqei"]
+[gd_scene load_steps=19 format=3 uid="uid://c4fxgtohrqei"]
 
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_2jxce"]
 [ext_resource type="Theme" uid="uid://bv6ucyhl2e1we" path="res://main_theme.tres" id="2_g1dkx"]
+[ext_resource type="Texture2D" uid="uid://b2xpfxx7sxh37" path="res://Assets/EnergyBar.png" id="3_wnwi7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swr0s"]
+bg_color = Color(0.207843, 0.207843, 0.207843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tv55c"]
+bg_color = Color(0.992157, 0.796078, 0.690196, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovxmf"]
+atlas = ExtResource("3_wnwi7")
+region = Rect2(119, 0, 119, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aar52"]
+atlas = ExtResource("3_wnwi7")
+region = Rect2(238, 0, 119, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmu2n"]
+atlas = ExtResource("3_wnwi7")
+region = Rect2(357, 0, 119, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f70b"]
+atlas = ExtResource("3_wnwi7")
+region = Rect2(476, 0, 119, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jg5q"]
+atlas = ExtResource("3_wnwi7")
+region = Rect2(595, 0, 119, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73fur"]
+atlas = ExtResource("3_wnwi7")
+region = Rect2(714, 0, 119, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw73f"]
+atlas = ExtResource("3_wnwi7")
+region = Rect2(833, 0, 119, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmtkw"]
+atlas = ExtResource("3_wnwi7")
+region = Rect2(952, 0, 119, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj333"]
+atlas = ExtResource("3_wnwi7")
+region = Rect2(0, 0, 119, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctr15"]
+atlas = ExtResource("3_wnwi7")
+region = Rect2(0, 0, 119, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_671hd"]
+atlas = ExtResource("3_wnwi7")
+region = Rect2(1071, 0, 119, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hivuw"]
+atlas = ExtResource("3_wnwi7")
+region = Rect2(1190, 0, 119, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g1ung"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovxmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aar52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmu2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f70b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jg5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73fur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw73f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmtkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj333")
+}],
+"loop": false,
+"name": &"activated",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctr15")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_671hd")
+}],
+"loop": true,
+"name": &"drained",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_hivuw")
+}],
+"loop": false,
+"name": &"regen",
+"speed": 5.0
+}]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -41,10 +155,18 @@ text = "0"
 
 [node name="EnergyBar" type="ProgressBar" parent="."]
 layout_mode = 2
-offset_left = 15.0
-offset_top = 693.0
-offset_right = 349.0
-offset_bottom = 708.0
+offset_left = -8.0
+offset_top = 672.0
+offset_right = 344.0
+offset_bottom = 688.0
 theme = ExtResource("2_g1dkx")
-value = 100.0
+theme_override_styles/background = SubResource("StyleBoxFlat_swr0s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tv55c")
+value = 70.0
 show_percentage = false
+
+[node name="EnergyBarBack" type="AnimatedSprite2D" parent="."]
+position = Vector2(176, 680)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_g1ung")
+animation = &"activated"

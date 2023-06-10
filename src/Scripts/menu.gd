@@ -18,7 +18,7 @@ var sfxPlay = false
 var cur_option = 0
 
 func _ready():
-	pass # Replace with function body.
+	cur_option = 1
 
 func _process(delta):
 	# Gamepad
@@ -49,6 +49,10 @@ func _process(delta):
 	elif Input.is_action_just_pressed("up") && cur_option > -1:
 		sfx_hover.play(0.0)
 		cur_option -= 1
+		
+	if settings_menu.visible && Input.is_action_just_pressed("back"):
+		settings_menu.visible = false
+		$PopupCloseSFX.play()
 	
 	# Normal Mouse
 	if startButton.button_pressed:
@@ -69,12 +73,15 @@ func _process(delta):
 		
 
 func _on_start_button_mouse_entered():
+	cur_option = 1
 	sfx_hover.play(0.0)
 
 func _on_settings_button_mouse_entered():
+	cur_option = 2
 	sfx_hover.play(0.0)
 
 func _on_quit_button_mouse_entered():
+	cur_option = 3
 	sfx_hover.play(0.0)
 
 
