@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://iicmvcvm40sc"]
+
+[ext_resource type="Script" path="res://Scripts/Arachnix.gd" id="1_qlg8n"]
+[ext_resource type="Texture2D" uid="uid://d26ibap8p4f1v" path="res://Assets/Enemies/Arachnix.png" id="2_gttvj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukn6j"]
+atlas = ExtResource("2_gttvj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_te2vo"]
+atlas = ExtResource("2_gttvj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x5d1"]
+atlas = ExtResource("2_gttvj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84phv"]
+atlas = ExtResource("2_gttvj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3i8s"]
+atlas = ExtResource("2_gttvj")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_51n60"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukn6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_te2vo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x5d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84phv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3i8s")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ekm"]
+size = Vector2(32, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkkfe"]
+size = Vector2(20, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2r70"]
+size = Vector2(80, 48)
+
+[node name="Arachnix" type="CharacterBody2D"]
+script = ExtResource("1_qlg8n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_51n60")
+frame_progress = 0.548343
+
+[node name="FloorBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_v1ekm")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_lkkfe")
+debug_color = Color(0.968627, 0, 0.458824, 0.419608)
+
+[node name="FrontCheck" type="RayCast2D" parent="."]
+position = Vector2(0, 8)
+target_position = Vector2(80, 0)
+
+[node name="BackCheck" type="Area2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackCheck"]
+position = Vector2(-40, -16)
+shape = SubResource("RectangleShape2D_y2r70")
+debug_color = Color(0.72549, 0.478431, 0, 0.419608)
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="BackCheck" to="." method="_on_back_check_area_entered"]

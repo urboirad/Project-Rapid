@@ -1,11 +1,11 @@
 ,en,sp,ja
-Start Demo,Start Demo,Comenzar,始める
+Start Demo,Start Demo,Comenzar,デモを開始する
 Settings,Settings,Ajustes,設定
 Quit,Quit,Abandonar,やめる
 Video,Video,Video,ビデオ
 Display Mode,Display Mode,Modo de visualización,ディスプレイモード
 Vsync (Recommended on),Vsync (Recommended on),Vsync (Recomendado en),垂直同期 (推奨)
-Max FPS,Max FPS,FPS máx.,最大FPS
+Max FPS,Max FPS,FPS máx.,最大 FPS
 Display FPS,Display FPS,Mostrar FPS,ディスプレイ FPS
 Audio,Audio,Audio,オーディオ
 Master Volume,Master Volume,Volumen principal,マスターボリューム
@@ -13,3 +13,21 @@ Music Volume,Music Volume,Volumen de la música,音楽の音量
 SFX Volume,SFX Volume,Volumen SFX,効果音ボリューム
 Gameplay,Gameplay,Gameplay,ゲームプレイ
 Language,Language,Idioma,言語
+Credits,Credits,Créditos,クレジット
+"Game / Music / Art
+UrBoiRAD
+
+Menu / Interface SFX
+ViRiX","Game / Music / Art
+UrBoiRAD
+
+Menu / Interface SFX
+ViRiX","Juego / Música / Arte
+UrBoiRAD
+
+Menú/Interfaz SFX
+ViRiX","「ゲーム・音楽・アート」
+UrBoiRAD
+
+メニュー / インターフェース SFX
+ViRiX"

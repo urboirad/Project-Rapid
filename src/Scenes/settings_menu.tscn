@@ -27,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Video" type="TabBar" parent="SettinTabs"]
+visible = false
 layout_mode = 2
 theme = ExtResource("1_q84a3")
 theme_override_fonts/font = ExtResource("3_mldv0")
@@ -200,6 +201,32 @@ popup/item_2/id = 2
 visible = false
 layout_mode = 2
 text = "Nothing yet :)"
+
+[node name="Credits" type="TabBar" parent="SettinTabs"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettinTabs/Credits"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 210
+theme_override_constants/margin_top = 50
+
+[node name="GridContainer" type="GridContainer" parent="SettinTabs/Credits/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="SettinTabs/Credits/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Game / Music / Art
+UrBoiRAD
+
+Menu / Interface SFX
+ViRiX"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="item_selected" from="SettinTabs/Video/MarginContainer/VideoSettings/DisplayOptionButton" to="." method="_on_display_option_button_item_selected"]
 [connection signal="toggled" from="SettinTabs/Video/MarginContainer/VideoSettings/VsyncBtn" to="." method="_on_vsync_btn_toggled"]
