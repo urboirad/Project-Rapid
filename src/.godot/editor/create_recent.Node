@@ -1,15 +1,15 @@
+AudioStreamPlayer
+Timer
 GridContainer
 MarginContainer
 Label
 TabBar
-Timer
 CollisionShape2D
 Area2D
 RayCast2D
 AnimatedSprite2D
 CharacterBody2D
 AudioStreamPlayer2D
-AudioStreamPlayer
 Node2D
 AnimationPlayer
 VBoxContainer

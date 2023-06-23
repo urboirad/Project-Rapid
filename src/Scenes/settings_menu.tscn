@@ -27,7 +27,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Video" type="TabBar" parent="SettinTabs"]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_q84a3")
 theme_override_fonts/font = ExtResource("3_mldv0")
@@ -203,6 +202,7 @@ layout_mode = 2
 text = "Nothing yet :)"
 
 [node name="Credits" type="TabBar" parent="SettinTabs"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="SettinTabs/Credits"]
