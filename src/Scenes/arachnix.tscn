@@ -112,5 +112,9 @@ volume_db = 24.0
 pitch_scale = 3.0
 bus = &"SFX"
 
+[node name="despawn" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="BackCheck" to="." method="_on_back_check_area_entered"]
+[connection signal="timeout" from="despawn" to="." method="_on_despawn_timeout"]

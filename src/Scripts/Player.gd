@@ -65,6 +65,8 @@ func _ready():
 	
 func _physics_process(delta):
 	
+	GlobalVariables.player = self
+	
 	forwardCamera() # Moves camera forward to compensate for speed
 	wallDetector() # Checks if Wall Detector is colliding
 	rotateSprite() # rotates sprite depeding on surface
@@ -75,9 +77,11 @@ func _physics_process(delta):
 	
 	# Invinsibility
 	if $Invincibilty.is_stopped():
+		self.modulate.a = 1.0 
 		hitbox.disabled = false
 		hurt = false
 	else:
+		self.modulate.a = 0.5
 		hitbox.disabled = true
 		hurt = true
 		if is_on_floor():
@@ -196,6 +200,7 @@ func jump(): # Jump function dummy
 func dash(delta):
 	if !hasDashed:
 		if Input.is_action_just_pressed("dash") && GlobalVariables.player_energy > 0:
+			GlobalVariables.camera.shake(0.2,1)
 			GlobalVariables.player_energy -= 20
 			sfx_boost.play()
 			velocity = axis * dash_speed * delta
@@ -434,6 +439,7 @@ func _on_hitbox_area_entered(area):
 		sfx_pickup.play()
 		pass
 	if area.is_in_group("enemy") && !isDashing:
+		frameFreeze(0.1,0.4)
 		var knocback = 200
 		$Invincibilty.start()
 		if Anim.flip_h:
@@ -442,3 +448,9 @@ func _on_hitbox_area_entered(area):
 		else:
 			velocity.y = JUMP_FORCE/2
 			velocity.x = -knocback
+
+func frameFreeze(timeScale, duration):
+	Engine.time_scale = timeScale
+	get_tree().create_timer(duration * timeScale)
+	await "timeout"
+	Engine.time_scale = 1.0

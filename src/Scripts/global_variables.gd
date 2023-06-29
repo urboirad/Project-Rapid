@@ -1,5 +1,8 @@
 extends Node
 
+var camera : Camera2D
+var player : CharacterBody2D
+
 var energy_tick = false
 
 var player_dashing = false

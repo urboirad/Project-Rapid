@@ -78,19 +78,28 @@ func _on_back_check_area_entered(area):
 
 
 func _on_hit_box_area_entered(area):
+	var knockback = 400
 	if area.is_in_group("player"):
 		if dead == false:
 			$FloorBox.disabled = true
 			if $AnimatedSprite2D.flip_h:
-				velocity.y = JUMP_VELOCITY/4
-				velocity.x -= -50
+				velocity.y = JUMP_VELOCITY
+				velocity.x -= -knockback
 			else:
-				velocity.y = JUMP_VELOCITY/4
-				velocity.x += 50
+				velocity.y = JUMP_VELOCITY
+				velocity.x += knockback
 			if GlobalVariables.player_dashing:
+				$despawn.start()
+				GlobalVariables.camera.shake(0.2,1)
 				dead = true
 				$HitBox/CollisionShape2D.disabled
 				$sfx_hit.play()
 				
 	else :
 		$FloorBox.disabled = false
+
+
+
+func _on_despawn_timeout():
+	print("Arachnix Erased")
+	self.queue_free()

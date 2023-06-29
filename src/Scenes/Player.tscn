@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://7y18g7xxsba8"]
+[gd_scene load_steps=41 format=3 uid="uid://7y18g7xxsba8"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bb24ww0emtx4o" path="res://Assets/Player/Player.png" id="2"]
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="4_4blxc"]
 [ext_resource type="AudioStream" uid="uid://64sosbupuu77" path="res://SFX/Player/Boost.wav" id="5_1hcpt"]
 [ext_resource type="AudioStream" uid="uid://0hddhxn7ofn1" path="res://SFX/Player/Charge.wav" id="6_cbxwa"]
 [ext_resource type="AudioStream" uid="uid://woi81hu2tnmx" path="res://SFX/Player/Jump.wav" id="7_jndcq"]
@@ -325,6 +326,10 @@ shape = SubResource("55")
 zoom = Vector2(3, 3)
 limit_smoothed = true
 position_smoothing_enabled = true
+script = ExtResource("4_4blxc")
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+one_shot = true
 
 [node name="DebugText" parent="." instance=ExtResource("42")]
 visible = false
@@ -372,4 +377,5 @@ one_shot = true
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="trailTimer" to="." method="_on_trail_timer_timeout"]
