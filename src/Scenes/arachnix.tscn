@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://iicmvcvm40sc"]
+[gd_scene load_steps=14 format=3 uid="uid://iicmvcvm40sc"]
 
 [ext_resource type="Script" path="res://Scripts/Arachnix.gd" id="1_qlg8n"]
 [ext_resource type="Texture2D" uid="uid://d26ibap8p4f1v" path="res://Assets/Enemies/Arachnix.png" id="2_gttvj"]
+[ext_resource type="AudioStream" uid="uid://1thhh3t8ab7w" path="res://SFX/EnemyHit.wav" id="3_ah3tu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukn6j"]
 atlas = ExtResource("2_gttvj")
@@ -18,6 +19,10 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_84phv"]
 atlas = ExtResource("2_gttvj")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h8hc"]
+atlas = ExtResource("2_gttvj")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3i8s"]
 atlas = ExtResource("2_gttvj")
@@ -44,6 +49,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_8h8hc")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_p3i8s")
 }],
 "loop": true,
@@ -52,10 +65,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ekm"]
-size = Vector2(32, 22)
+size = Vector2(16, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkkfe"]
-size = Vector2(20, 16)
+size = Vector2(32, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2r70"]
 size = Vector2(80, 48)
@@ -65,16 +78,15 @@ script = ExtResource("1_qlg8n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_51n60")
-frame_progress = 0.548343
 
 [node name="FloorBox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_v1ekm")
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 8)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_lkkfe")
 debug_color = Color(0.968627, 0, 0.458824, 0.419608)
 
@@ -91,6 +103,18 @@ shape = SubResource("RectangleShape2D_y2r70")
 debug_color = Color(0.72549, 0.478431, 0, 0.419608)
 
 [node name="Cooldown" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
+[node name="sfx_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ah3tu")
+volume_db = 24.0
+pitch_scale = 3.0
+bus = &"SFX"
+
+[node name="despawn" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="BackCheck" to="." method="_on_back_check_area_entered"]
+[connection signal="timeout" from="despawn" to="." method="_on_despawn_timeout"]

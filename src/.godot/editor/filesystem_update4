@@ -1,16 +1,16 @@
+res://Scripts/Camera.gd
 res://default_env.tres
-res://Scenes/spring.tscn
+res://Scenes/Player.tscn
 res://main_theme.tres
 res://Tilesets/Test.tres
+res://Scripts/global_variables.gd
 res://Scenes/menu.tscn
+res://Scripts/Player.gd
 res://World.tscn
-res://Scenes/Player.tscn
 res://Scenes/scene_transition.tscn
 res://Scenes/ui.tscn
 res://Scenes/carro.tscn
-res://Scripts/Arachnix.gd
+res://Scenes/spring.tscn
 res://Scenes/arachnix.tscn
 res://Scenes/settings_menu.tscn
-res://roject Rapid '23 Translation.en.translation
-res://roject Rapid '23 Translation.sp.translation
-res://roject Rapid '23 Translation.ja.translation
+res://Scripts/Arachnix.gd

@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
 var energy = 100
+var hurt = false
 
 # Nodes
-@onready var hitbox = $Hitbox
+@onready var hitbox_area = $Hitbox
+@onready var hitbox = $Hitbox/AreaShape
 @onready var Anim = $AnimatedSprite2D
 @onready var wallCast = $WallDetector
 @onready var floorCast = $floorDetect
@@ -63,6 +65,8 @@ func _ready():
 	
 func _physics_process(delta):
 	
+	GlobalVariables.player = self
+	
 	forwardCamera() # Moves camera forward to compensate for speed
 	wallDetector() # Checks if Wall Detector is colliding
 	rotateSprite() # rotates sprite depeding on surface
@@ -71,7 +75,22 @@ func _physics_process(delta):
 	apply_gravity() # Applies character's gravity
 	dash(delta)
 	
-	if !isDashing: # If Player isn't Dashing
+	# Invinsibility
+	if $Invincibilty.is_stopped():
+		self.modulate.a = 1.0 
+		hitbox.disabled = false
+		hurt = false
+	else:
+		self.modulate.a = 0.5
+		hitbox.disabled = true
+		hurt = true
+		if is_on_floor():
+			$Invincibilty.stop()
+		
+	if hurt && is_on_floor():
+		hurt = false
+	
+	if !isDashing or !hurt: # If Player isn't Dashing
 		animations() # Updates Animations
 	
 	# Left and Right Input
@@ -109,6 +128,7 @@ func _physics_process(delta):
 	
 	# If player is dashing...
 	if isDashing:
+		GlobalVariables.player_dashing = true
 		Anim.play("Dash")
 		if wallCast.is_colliding():
 			if Anim.flip_h == false:
@@ -126,6 +146,8 @@ func _physics_process(delta):
 			velocity.x = velocity.x + dash_speed if isDashing else MAX_SPEED
 		else:
 			velocity.x = velocity.x - dash_speed if isDashing else MAX_SPEED
+	else:
+		GlobalVariables.player_dashing = false
 	
 	# Player snap and no snap control
 	var snap = Vector2.DOWN * 128 if is_on_floor() else Vector2.UP
@@ -178,6 +200,7 @@ func jump(): # Jump function dummy
 func dash(delta):
 	if !hasDashed:
 		if Input.is_action_just_pressed("dash") && GlobalVariables.player_energy > 0:
+			GlobalVariables.camera.shake(0.2,1)
 			GlobalVariables.player_energy -= 20
 			sfx_boost.play()
 			velocity = axis * dash_speed * delta
@@ -299,6 +322,9 @@ func animations(): # Animation update
 			Anim.speed_scale = 1
 	else:
 		Anim.play("Crouch")
+		
+	if hurt:
+		Anim.play("Hurt")
 
 # Physics stuff...
 func apply_gravity():
@@ -370,7 +396,8 @@ func rotateSprite():
 
 # Fall Limit
 func _on_Fall_limit_area_entered(area):
-	SceneTransition.quick_fade("res://World.tscn")
+	if area.is_in_group("player"):
+		SceneTransition.quick_fade("res://World.tscn")
 
 # Debug
 func debugText():
@@ -390,7 +417,7 @@ func _on_trail_timer_timeout():
 		var trail_sprite = Sprite2D.new()
 		trail_sprite.texture = load("res://Assets/Player/Player.png")
 		trail_sprite.vframes = 1
-		trail_sprite.hframes = 22
+		trail_sprite.hframes = 23
 		trail_sprite.frame = 9
 		trail_sprite.scale.y = Anim.scale.y
 		trail_sprite.scale.x = Anim.scale.x
@@ -411,3 +438,19 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("carro"):
 		sfx_pickup.play()
 		pass
+	if area.is_in_group("enemy") && !isDashing:
+		frameFreeze(0.1,0.4)
+		var knocback = 200
+		$Invincibilty.start()
+		if Anim.flip_h:
+			velocity.y = JUMP_FORCE/2
+			velocity.x = knocback
+		else:
+			velocity.y = JUMP_FORCE/2
+			velocity.x = -knocback
+
+func frameFreeze(timeScale, duration):
+	Engine.time_scale = timeScale
+	get_tree().create_timer(duration * timeScale)
+	await "timeout"
+	Engine.time_scale = 1.0
