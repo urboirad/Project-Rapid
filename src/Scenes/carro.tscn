@@ -58,7 +58,7 @@ size = Vector2(10, 10)
 
 [node name="Carro" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_g32wj")
-frame_progress = 0.717507
+frame_progress = 0.108552
 script = ExtResource("2_yww5s")
 
 [node name="Area2D" type="Area2D" parent="." groups=["carro"]]

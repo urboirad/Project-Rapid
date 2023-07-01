@@ -1,12 +1,9 @@
-res://Scripts/Camera.gd
 res://default_env.tres
-res://Scenes/Player.tscn
+res://World.tscn
 res://main_theme.tres
 res://Tilesets/Test.tres
-res://Scripts/global_variables.gd
 res://Scenes/menu.tscn
-res://Scripts/Player.gd
-res://World.tscn
+res://Scenes/Player.tscn
 res://Scenes/scene_transition.tscn
 res://Scenes/ui.tscn
 res://Scenes/carro.tscn
@@ -14,3 +11,4 @@ res://Scenes/spring.tscn
 res://Scenes/arachnix.tscn
 res://Scenes/settings_menu.tscn
 res://Scripts/Arachnix.gd
+res://Scripts/Carro.gd
