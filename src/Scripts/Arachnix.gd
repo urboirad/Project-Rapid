@@ -67,9 +67,15 @@ func _physics_process(delta):
 			velocity.x = knockback
 		else:
 			velocity.x = -knockback
-			
+	
+	if velocity.x > 300 && velocity.y != 0 or velocity.x < -300 && velocity.y != 0:
+		if !dead:
+			velocity.x = lerp(velocity.x, 0.0, 1)
 
 	move_and_slide()
+	
+	if is_on_floor():
+		$HitBox/CollisionShape2D.disabled = false
 
 
 func _on_back_check_area_entered(area):
@@ -80,7 +86,7 @@ func _on_back_check_area_entered(area):
 func _on_hit_box_area_entered(area):
 	var knockback = 300
 	if area.is_in_group("player"):
-		if dead == false:
+		if !dead:
 			$FloorBox.disabled = true
 			if $AnimatedSprite2D.flip_h:
 				$HitBox/CollisionShape2D.disabled = true

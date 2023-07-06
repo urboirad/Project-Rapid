@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://7y18g7xxsba8"]
+[gd_scene load_steps=42 format=3 uid="uid://7y18g7xxsba8"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bb24ww0emtx4o" path="res://Assets/Player/Player.png" id="2"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://d3018kibc3fgx" path="res://SFX/Player/Jump_Charge.wav" id="8_mpg5g"]
 [ext_resource type="AudioStream" uid="uid://b5us2cwafs4ld" path="res://SFX/Player/Pickup.wav" id="9_uvtlg"]
 [ext_resource type="AudioStream" uid="uid://dutigd31wiufa" path="res://SFX/Spring.wav" id="10_mjm4w"]
+[ext_resource type="FontFile" uid="uid://bfgslgu4lfhx3" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="12_3ih1g"]
 [ext_resource type="PackedScene" uid="uid://cvo4k6qneyjmh" path="res://Scenes/Dash.tscn" id="22"]
 [ext_resource type="PackedScene" uid="uid://cc1y7t7ketwv0" path="res://Scenes/DebugText.tscn" id="42"]
 
@@ -279,9 +280,9 @@ position = Vector2(0, 17)
 [node name="Hitbox" type="Area2D" parent="." groups=["player"]]
 
 [node name="AreaShape" type="CollisionShape2D" parent="Hitbox"]
-modulate = Color(1, 0, 0, 1)
 position = Vector2(0, 21.5)
 shape = SubResource("34")
+debug_color = Color(0.964706, 0, 0.494118, 0.419608)
 
 [node name="WallDetector" type="RayCast2D" parent="."]
 position = Vector2(0, 16)
@@ -373,9 +374,20 @@ bus = &"SFX"
 autostart = true
 
 [node name="Invincibilty" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -18.0
+offset_top = -13.0
+offset_right = 22.0
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("12_3ih1g")
+text = "hurt"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="trailTimer" to="." method="_on_trail_timer_timeout"]
+[connection signal="timeout" from="Invincibilty" to="." method="_on_invincibilty_timeout"]

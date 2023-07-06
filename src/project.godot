@@ -31,6 +31,8 @@ Global="*res://Scripts/global.gd"
 SceneTransition="*res://Scenes/scene_transition.tscn"
 DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
 GlobalVariables="*res://Scripts/global_variables.gd"
+DialogHud="*res://Scenes/dialog_hud.tscn"
+RespawnEffect="*res://Scenes/respawn_effect.tscn"
 
 [display]
 

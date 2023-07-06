@@ -65,6 +65,8 @@ func _ready():
 	
 func _physics_process(delta):
 	
+	$Label.text = str(hurt)
+	
 	GlobalVariables.player = self
 	
 	forwardCamera() # Moves camera forward to compensate for speed
@@ -76,22 +78,18 @@ func _physics_process(delta):
 	dash(delta)
 	
 	# Invinsibility
-	if $Invincibilty.is_stopped():
-		self.modulate.a = 1.0 
-		hitbox.disabled = false
-		hurt = false
-	else:
-		self.modulate.a = 0.5
-		hitbox.disabled = true
-		hurt = true
-		if is_on_floor():
-			$Invincibilty.stop()
+
 		
-	if hurt && is_on_floor():
-		hurt = false
-	
-	if !isDashing or !hurt: # If Player isn't Dashing
-		animations() # Updates Animations
+	if !isDashing: # If Player isn't Dashing
+		if !hurt:
+			self.modulate.a = 1.0 
+			hitbox.disabled = false
+			animations() # Updates Animations
+		else:
+			self.modulate.a = 0.5
+			hitbox.disabled = true
+			Anim.play("Hurt")
+		
 	
 	# Left and Right Input
 	var input = Vector2.ZERO
@@ -322,9 +320,6 @@ func animations(): # Animation update
 			Anim.speed_scale = 1
 	else:
 		Anim.play("Crouch")
-		
-	if hurt:
-		Anim.play("Hurt")
 
 # Physics stuff...
 func apply_gravity():
@@ -439,18 +434,33 @@ func _on_hitbox_area_entered(area):
 		sfx_pickup.play()
 		pass
 	if area.is_in_group("enemy") && !isDashing:
+		$Invincibilty.start()
+		hurt = true
+		GlobalVariables.player_energy = GlobalVariables.player_energy - 10
 		frameFreeze(0.1,0.4)
 		var knocback = 200
-		$Invincibilty.start()
 		if Anim.flip_h:
 			velocity.y = JUMP_FORCE/2
 			velocity.x = knocback
 		else:
 			velocity.y = JUMP_FORCE/2
 			velocity.x = -knocback
-
+		if GlobalVariables.player_energy <= 0:
+			RespawnEffect.play()
+			velocity.y = 0
+			velocity.x = 0
+			position.x = GlobalVariables.RespawnX
+			position.y = GlobalVariables.RespawnY
+			GlobalVariables.player_energy = 100
+			
+	if area.is_in_group("NPC"):
+		pass
 func frameFreeze(timeScale, duration):
 	Engine.time_scale = timeScale
 	get_tree().create_timer(duration * timeScale)
 	await "timeout"
 	Engine.time_scale = 1.0
+
+
+func _on_invincibilty_timeout():
+	hurt = false

@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dn4elx5832rmk"]
+[gd_scene load_steps=14 format=3 uid="uid://dn4elx5832rmk"]
 
 [ext_resource type="TileSet" uid="uid://doa5s17wqrjve" path="res://Tilesets/Test.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://cqf6676hte0ry" path="res://pRicon.png" id="1_kan8y"]
 [ext_resource type="PackedScene" uid="uid://7y18g7xxsba8" path="res://Scenes/Player.tscn" id="2"]
+[ext_resource type="Script" path="res://Scripts/RespawnPoint.gd" id="2_e2nc6"]
 [ext_resource type="PackedScene" path="res://Scenes/Fall Limit.tscn" id="4"]
 [ext_resource type="Script" path="res://Scripts/TestCam.gd" id="4_1nc8a"]
 [ext_resource type="AudioStream" uid="uid://hjrmin10dij5" path="res://Music/Project Rapid - Tutorial.wav" id="4_ah53i"]
@@ -10,11 +12,22 @@
 [ext_resource type="PackedScene" uid="uid://c4fxgtohrqei" path="res://Scenes/ui.tscn" id="8_wkywx"]
 [ext_resource type="PackedScene" uid="uid://daq33svi7bq6i" path="res://Scenes/carro.tscn" id="9_7yl10"]
 [ext_resource type="PackedScene" uid="uid://iicmvcvm40sc" path="res://Scenes/arachnix.tscn" id="10_rl4a4"]
+[ext_resource type="PackedScene" uid="uid://dbiwtcgy1rrqo" path="res://Scenes/iris.tscn" id="11_88p8d"]
 
 [node name="World" type="Node2D"]
 
+[node name="RespawnPoint" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(1088, 64)
+scale = Vector2(0.03, 0.0888889)
+texture = ExtResource("1_kan8y")
+script = ExtResource("2_e2nc6")
+
+[node name="Iris" parent="." instance=ExtResource("11_88p8d")]
+position = Vector2(1048, 72)
+
 [node name="Player" parent="." instance=ExtResource("2")]
-position = Vector2(1360, 128)
+position = Vector2(1320, 128)
 MAX_SPEED = 300
 FRICTION = 30
 
