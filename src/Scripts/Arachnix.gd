@@ -59,7 +59,6 @@ func _physics_process(delta):
 			$FrontCheck.enabled = false
 	else:
 		var knockback = 500
-		$FloorBox.disabled = true
 		$AnimatedSprite2D.play("hurt")
 		$AnimatedSprite2D.rotation_degrees += 10
 		velocity.y += gravity * delta
@@ -97,15 +96,19 @@ func _on_hit_box_area_entered(area):
 				velocity.y = JUMP_VELOCITY
 				velocity.x += knockback
 			if GlobalVariables.player_dashing:
+				$FloorBox.queue_free()
+				$HitBox/CollisionShape2D.queue_free()
+				$FrontCheck.queue_free()
+				$BackCheck/CollisionShape2D.queue_free()
 				$despawn.start()
+				GlobalVariables.player_energy += 20
 				GlobalVariables.camera.shake(0.2,1)
 				dead = true
-				$HitBox/CollisionShape2D.disabled = true
 				$sfx_hit.play()
 				
 	else :
-		$FloorBox.disabled = false
-		$HitBox/CollisionShape2D.disabled = false
+		$FloorBox.call_deferred("is_disabled", false)
+		$HitBox/CollisionShape2D.call_deferred("is_disabled", false)
 
 
 

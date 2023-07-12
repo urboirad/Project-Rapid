@@ -1,0 +1,206 @@
+[gd_scene load_steps=26 format=3 uid="uid://b0oftnghonn4b"]
+
+[ext_resource type="Texture2D" uid="uid://dfn5blf0ukrdq" path="res://Assets/Enemies/BB.png" id="1_4fq0v"]
+[ext_resource type="Script" path="res://Scripts/bb.gd" id="1_sram5"]
+[ext_resource type="AudioStream" uid="uid://1thhh3t8ab7w" path="res://SFX/EnemyHit.wav" id="3_irw6c"]
+[ext_resource type="AudioStream" uid="uid://6kbrm3fndbim" path="res://SFX/Weapon_Shot.wav" id="4_nqo8e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsdw4"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(0, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub2al"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(64, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3s8p"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(128, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhxje"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(192, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjv2g"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(256, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8lcf"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(320, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbh1o"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(384, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdwlx"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(0, 96, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gq5wj"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(0, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oir0a"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(64, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcca2"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(128, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgky6"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(192, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88ahg"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(256, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1dtq"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(320, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot71k"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(384, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phq1j"]
+atlas = ExtResource("1_4fq0v")
+region = Rect2(448, 48, 64, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0mvco"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsdw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ub2al")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3s8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhxje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjv2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8lcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbh1o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdwlx")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gq5wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oir0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcca2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgky6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88ahg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1dtq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot71k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phq1j")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvtct"]
+size = Vector2(46, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7s7g5"]
+size = Vector2(55, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1tbe"]
+size = Vector2(23, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s67f6"]
+size = Vector2(32, 30)
+
+[node name="BB" type="CharacterBody2D"]
+script = ExtResource("1_sram5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0mvco")
+animation = &"shoot"
+frame_progress = 0.725572
+
+[node name="BackCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackCheck"]
+position = Vector2(33, 5)
+shape = SubResource("RectangleShape2D_wvtct")
+debug_color = Color(0.698039, 0.494118, 0.0117647, 0.419608)
+
+[node name="FrontCheck" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontCheck"]
+position = Vector2(-17.5, 5)
+shape = SubResource("RectangleShape2D_7s7g5")
+debug_color = Color(0, 0.615686, 0.6, 0.419608)
+
+[node name="FloorBox" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 7)
+shape = SubResource("RectangleShape2D_k1tbe")
+
+[node name="HitBox" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(1, 6)
+shape = SubResource("RectangleShape2D_s67f6")
+debug_color = Color(0.988235, 0, 0.301961, 0.419608)
+
+[node name="sfx_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_irw6c")
+pitch_scale = 3.0
+bus = &"SFX"
+
+[node name="despawn" type="Timer" parent="."]
+
+[node name="BulletSpawn" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="sfx_shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_nqo8e")
+bus = &"SFX"
+
+[node name="ExitCool" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="BackCheck" to="." method="_on_back_check_area_entered"]
+[connection signal="area_entered" from="FrontCheck" to="." method="_on_front_check_area_entered"]
+[connection signal="area_exited" from="FrontCheck" to="." method="_on_front_check_area_exited"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="despawn" to="." method="_on_despawn_timeout"]
+[connection signal="timeout" from="BulletSpawn" to="." method="_on_bullet_spawn_timeout"]

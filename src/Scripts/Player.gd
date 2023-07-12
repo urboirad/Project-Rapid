@@ -437,7 +437,7 @@ func _on_hitbox_area_entered(area):
 		$Invincibilty.start()
 		hurt = true
 		GlobalVariables.player_energy = GlobalVariables.player_energy - 10
-		frameFreeze(0.1,0.4)
+		#frameFreeze(0.1,0.4)
 		var knocback = 200
 		if Anim.flip_h:
 			velocity.y = JUMP_FORCE/2
