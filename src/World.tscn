@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dn4elx5832rmk"]
+[gd_scene load_steps=16 format=3 uid="uid://dn4elx5832rmk"]
 
 [ext_resource type="TileSet" uid="uid://doa5s17wqrjve" path="res://Tilesets/Test.tres" id="1"]
 [ext_resource type="Texture2D" uid="uid://cqf6676hte0ry" path="res://pRicon.png" id="1_kan8y"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://iicmvcvm40sc" path="res://Scenes/arachnix.tscn" id="10_rl4a4"]
 [ext_resource type="PackedScene" uid="uid://dbiwtcgy1rrqo" path="res://Scenes/iris.tscn" id="11_88p8d"]
 [ext_resource type="PackedScene" uid="uid://b0oftnghonn4b" path="res://Scenes/bb.tscn" id="14_l14mh"]
+[ext_resource type="PackedScene" uid="uid://bmiqs2p1lft7o" path="res://Scenes/hammerhead.tscn" id="15_q3hvi"]
 
 [node name="World" type="Node2D"]
 
@@ -28,7 +29,7 @@ script = ExtResource("2_e2nc6")
 position = Vector2(1048, 72)
 
 [node name="Player" parent="." instance=ExtResource("2")]
-position = Vector2(1320, 128)
+position = Vector2(1312, 128)
 MAX_SPEED = 300
 FRICTION = 30
 
@@ -50,7 +51,6 @@ script = ExtResource("4_1nc8a")
 [node name="TrainingMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ah53i")
 volume_db = -13.684
-autoplay = true
 bus = &"Music"
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -83,9 +83,12 @@ position = Vector2(896, 368)
 position = Vector2(912, 368)
 
 [node name="Arachnix" parent="." instance=ExtResource("10_rl4a4")]
-position = Vector2(1568, 144)
+position = Vector2(1400, 144)
 
 [node name="BB" parent="." instance=ExtResource("14_l14mh")]
-position = Vector2(1384, 128)
+position = Vector2(1576, 128)
+
+[node name="Hammerhead" parent="." instance=ExtResource("15_q3hvi")]
+position = Vector2(1488, 144)
 
 [connection signal="area_entered" from="Fall_limit" to="Player" method="_on_Fall_limit_area_entered"]

@@ -438,13 +438,13 @@ func _on_hitbox_area_entered(area):
 		hurt = true
 		GlobalVariables.player_energy = GlobalVariables.player_energy - 10
 		#frameFreeze(0.1,0.4)
-		var knocback = 200
+		var knocback = 300
 		if Anim.flip_h:
 			velocity.y = JUMP_FORCE/2
-			velocity.x = knocback
+			velocity.x = velocity.x + knocback
 		else:
 			velocity.y = JUMP_FORCE/2
-			velocity.x = -knocback
+			velocity.x = velocity.x - knocback
 		if GlobalVariables.player_energy <= 0:
 			RespawnEffect.play()
 			velocity.y = 0

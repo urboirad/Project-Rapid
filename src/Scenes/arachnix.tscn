@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://iicmvcvm40sc"]
+[gd_scene load_steps=15 format=3 uid="uid://iicmvcvm40sc"]
 
 [ext_resource type="Script" path="res://Scripts/Arachnix.gd" id="1_qlg8n"]
 [ext_resource type="Texture2D" uid="uid://d26ibap8p4f1v" path="res://Assets/Enemies/Arachnix.png" id="2_gttvj"]
@@ -70,6 +70,9 @@ size = Vector2(16, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkkfe"]
 size = Vector2(32, 24)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tptxj"]
+size = Vector2(66, 48)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2r70"]
 size = Vector2(80, 48)
 
@@ -90,9 +93,12 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_lkkfe")
 debug_color = Color(0.968627, 0, 0.458824, 0.419608)
 
-[node name="FrontCheck" type="RayCast2D" parent="."]
+[node name="FC" type="Area2D" parent="."]
 position = Vector2(0, 8)
-target_position = Vector2(80, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FC"]
+position = Vector2(47, -16)
+shape = SubResource("RectangleShape2D_tptxj")
 
 [node name="BackCheck" type="Area2D" parent="."]
 position = Vector2(0, 8)
@@ -115,5 +121,6 @@ bus = &"SFX"
 one_shot = true
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_entered" from="FC" to="." method="_on_fc_area_entered"]
 [connection signal="area_entered" from="BackCheck" to="." method="_on_back_check_area_entered"]
 [connection signal="timeout" from="despawn" to="." method="_on_despawn_timeout"]

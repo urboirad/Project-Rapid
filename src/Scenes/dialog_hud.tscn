@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://drmxhone375ph"]
+[gd_scene load_steps=20 format=3 uid="uid://drmxhone375ph"]
 
 [ext_resource type="Script" path="res://Scripts/dialog_hud.gd" id="1_nesx4"]
 [ext_resource type="Texture2D" uid="uid://1vrt2gjs3gmy" path="res://Assets/Dialog/IrisPortrait.png" id="1_r2xg2"]
 [ext_resource type="FontFile" uid="uid://bfgslgu4lfhx3" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="2_c8loi"]
 [ext_resource type="Texture2D" uid="uid://lj7cnpsegn8s" path="res://Assets/Dialog/RadPortrait.png" id="3_4y16f"]
+[ext_resource type="AudioStream" uid="uid://c0qcopiaexbiy" path="res://SFX/Iris Voice/1.ogg" id="5_c4xf2"]
 
 [sub_resource type="Theme" id="Theme_hf7h6"]
 default_font = ExtResource("2_c8loi")
@@ -181,3 +182,6 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_lw802")
 }
+
+[node name="IrisVoice" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_c4xf2")

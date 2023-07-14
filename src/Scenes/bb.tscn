@@ -186,6 +186,7 @@ pitch_scale = 3.0
 bus = &"SFX"
 
 [node name="despawn" type="Timer" parent="."]
+one_shot = true
 
 [node name="BulletSpawn" type="Timer" parent="."]
 wait_time = 0.2

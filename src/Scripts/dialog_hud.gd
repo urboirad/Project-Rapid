@@ -16,6 +16,9 @@ var curDiaLine = 1
 
 var finished = false
 
+# Voice SFX
+var cur_sound = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	box.scale.y = 0
@@ -58,6 +61,8 @@ func _process(delta):
 	# Text Animation
 	if spell:
 		text.visible_characters += spellSpeed
+		if GlobalVariables.dia_isTalking == "Iris":
+			$IrisVoice.play()
 		
 	if text.visible_characters == text.get_total_character_count() && spell:
 		spell = false

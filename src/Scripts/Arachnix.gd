@@ -15,11 +15,6 @@ var dead = false
 func _physics_process(delta):
 	
 	if !dead:
-		# Detect Player
-		if $FrontCheck.is_colliding() && !jumping:
-			jumping = true
-			$Cooldown.start()
-			pass
 			
 		
 		# Add the gravity.
@@ -36,11 +31,11 @@ func _physics_process(delta):
 		# Animation
 		if direction == 1:
 			$AnimatedSprite2D.flip_h = false
-			$FrontCheck.target_position.x = 80
+			$FC/CollisionShape2D.position.x = 47
 			$BackCheck.position.x = 0
 		if direction == -1:
 			$AnimatedSprite2D.flip_h = true
-			$FrontCheck.target_position.x = -80
+			$FC/CollisionShape2D.position.x = -47
 			$BackCheck.position.x = 80
 		
 		if velocity.y == 0:
@@ -54,9 +49,9 @@ func _physics_process(delta):
 				velocity.x -= 5
 		
 		if $Cooldown.is_stopped():
-			$FrontCheck.enabled = true
+			$FC/CollisionShape2D.disabled = false
 		else:
-			$FrontCheck.enabled = false
+			$FC/CollisionShape2D.disabled = true
 	else:
 		var knockback = 500
 		$AnimatedSprite2D.play("hurt")
@@ -66,10 +61,6 @@ func _physics_process(delta):
 			velocity.x = knockback
 		else:
 			velocity.x = -knockback
-	
-	if velocity.x > 300 && velocity.y != 0 or velocity.x < -300 && velocity.y != 0:
-		if !dead:
-			velocity.x = lerp(velocity.x, 0.0, 1)
 
 	move_and_slide()
 	
@@ -83,22 +74,24 @@ func _on_back_check_area_entered(area):
 
 
 func _on_hit_box_area_entered(area):
-	var knockback = 300
+	var knockback = 150
 	if area.is_in_group("player"):
 		if !dead:
 			$FloorBox.disabled = true
 			if $AnimatedSprite2D.flip_h:
 				$HitBox/CollisionShape2D.disabled = true
 				velocity.y = JUMP_VELOCITY
-				velocity.x -= -knockback
+				velocity.x = 0
+				velocity.x = velocity.x + knockback
 			else:
 				$HitBox/CollisionShape2D.disabled = true
 				velocity.y = JUMP_VELOCITY
-				velocity.x += knockback
+				velocity.x = 0
+				velocity.x = velocity.x - knockback
 			if GlobalVariables.player_dashing:
 				$FloorBox.queue_free()
 				$HitBox/CollisionShape2D.queue_free()
-				$FrontCheck.queue_free()
+				$FC.queue_free()
 				$BackCheck/CollisionShape2D.queue_free()
 				$despawn.start()
 				GlobalVariables.player_energy += 20
@@ -115,3 +108,9 @@ func _on_hit_box_area_entered(area):
 func _on_despawn_timeout():
 	print("Arachnix Erased")
 	self.queue_free()
+
+
+func _on_fc_area_entered(area):
+	if area.is_in_group("player"):
+		jumping = true
+		$Cooldown.start()

@@ -1,8 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1689119055
+::res://::1689276113
 Dark-Red-Wallpaper-Desktop-Aesthetic-Comitatofesteteolo.xyz-1.png::CompressedTexture2D::2048589646638898286::1683829964::1683829966::1::::<><>::
 default_bus_layout.tres::AudioBusLayout::3343763155364074410::1684194153::0::1::::<><>::
-default_env.tres::Environment::382564550578128600::1689119055::0::1::::<><>::
+default_env.tres::Environment::382564550578128600::1689206530::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1684514733::0::1::::<><>::
 LogoFullHD.png::CompressedTexture2D::5349085529129520618::1683825446::1683826774::1::::<><>::
 LogoFullLowRes.png::CompressedTexture2D::6062032256060733436::1683496680::1683496680::1::::<><>::
@@ -18,7 +18,7 @@ roject Rapid '23 Translation.en.translation::OptimizedTranslation::4647394132265
 roject Rapid '23 Translation.ja.translation::OptimizedTranslation::5234664624598046391::1687290004::0::1::::<><>::
 roject Rapid '23 Translation.sp.translation::OptimizedTranslation::6619490880285971202::1687290004::0::1::::<><>::
 whiten_material.tres::Shader::6337825741881785415::1687634820::0::1::::<><>::
-World.tscn::PackedScene::8131847740864530846::1689119054::0::1::::<><>::uid://doa5s17wqrjve::::res://Tilesets/Test.tres<>uid://cqf6676hte0ry::::res://pRicon.png<>uid://7y18g7xxsba8::::res://Scenes/Player.tscn<>res://Scripts/RespawnPoint.gd<>res://Scenes/Fall Limit.tscn<>res://Scripts/TestCam.gd<>uid://hjrmin10dij5::::res://Music/Project Rapid - Tutorial.wav<>uid://dkwrgwa2lse5s::::res://Scenes/fps_label.tscn<>uid://cg3gscx7xhrby::::res://Scenes/spring.tscn<>uid://c4fxgtohrqei::::res://Scenes/ui.tscn<>uid://daq33svi7bq6i::::res://Scenes/carro.tscn<>uid://iicmvcvm40sc::::res://Scenes/arachnix.tscn<>uid://dbiwtcgy1rrqo::::res://Scenes/iris.tscn<>uid://b0oftnghonn4b::::res://Scenes/bb.tscn
+World.tscn::PackedScene::8131847740864530846::1689206482::0::1::::<><>::uid://doa5s17wqrjve::::res://Tilesets/Test.tres<>uid://cqf6676hte0ry::::res://pRicon.png<>uid://7y18g7xxsba8::::res://Scenes/Player.tscn<>res://Scripts/RespawnPoint.gd<>res://Scenes/Fall Limit.tscn<>res://Scripts/TestCam.gd<>uid://hjrmin10dij5::::res://Music/Project Rapid - Tutorial.wav<>uid://dkwrgwa2lse5s::::res://Scenes/fps_label.tscn<>uid://cg3gscx7xhrby::::res://Scenes/spring.tscn<>uid://c4fxgtohrqei::::res://Scenes/ui.tscn<>uid://daq33svi7bq6i::::res://Scenes/carro.tscn<>uid://iicmvcvm40sc::::res://Scenes/arachnix.tscn<>uid://dbiwtcgy1rrqo::::res://Scenes/iris.tscn<>uid://b0oftnghonn4b::::res://Scenes/bb.tscn
 ::res://addons/::1684517064
 ::res://addons/discord-sdk-gd/::1688677429
 discord-rpc-gd.gdextension::GDExtension::-1::1688661524::0::1::::<><>::
@@ -61,10 +61,11 @@ Spring.png::CompressedTexture2D::158273975104555027::1684941763::1684941764::1::
 ::res://Assets/Dialog/::1688425512
 IrisPortrait.png::CompressedTexture2D::1869329414218681320::1688425512::1688425512::1::::<><>::
 RadPortrait.png::CompressedTexture2D::792603901960283928::1688425512::1688425512::1::::<><>::
-::res://Assets/Enemies/::1689116704
+::res://Assets/Enemies/::1689277907
 Arachnix.png::CompressedTexture2D::9118844086110693973::1687374327::1687374328::1::::<><>::
 BB.png::CompressedTexture2D::7538867062293039786::1689108112::1689108112::1::::<><>::
 Bullet.png::CompressedTexture2D::7073647195352009742::1689116704::1689116704::1::::<><>::
+Hammerhead.png::CompressedTexture2D::234215361891605677::1689277907::1689277907::1::::<><>::
 ::res://Assets/NPC/::1688425228
 Iris.png::CompressedTexture2D::1020767973553038604::1688425228::1688425228::1::::<><>::
 ::res://Assets/Player/::1687374351
@@ -136,23 +137,23 @@ Project Rapid - Frontier Foothills.wav::AudioStreamWAV::8078538149297526190::168
 Project Rapid - Menu.wav::AudioStreamWAV::6368920577852506014::1683824897::1687404636::1::::<><>::
 Project Rapid - Results.wav::AudioStreamWAV::1419753419931275755::1684873657::1684873659::1::::<><>::
 Project Rapid - Tutorial.wav::AudioStreamWAV::510955365140768792::1683824897::1684463470::1::::<><>::
-::res://Scenes/::1689119055
-arachnix.tscn::PackedScene::578169741700440082::1689119055::0::1::::<><>::res://Scripts/Arachnix.gd<>uid://d26ibap8p4f1v::::res://Assets/Enemies/Arachnix.png<>uid://1thhh3t8ab7w::::res://SFX/EnemyHit.wav
-carro.tscn::PackedScene::7194043151438557998::1688677495::0::1::::<><>::uid://qx3yyur7i3t7::::res://Assets/Carro.png<>res://Scripts/Carro.gd
+::res://Scenes/::1689206530
+arachnix.tscn::PackedScene::578169741700440082::1689206483::0::1::::<><>::res://Scripts/Arachnix.gd<>uid://d26ibap8p4f1v::::res://Assets/Enemies/Arachnix.png<>uid://1thhh3t8ab7w::::res://SFX/EnemyHit.wav
+bb.tscn::PackedScene::4170381270658434871::1689206483::0::1::::<><>::uid://dfn5blf0ukrdq::::res://Assets/Enemies/BB.png<>res://Scripts/bb.gd<>uid://1thhh3t8ab7w::::res://SFX/EnemyHit.wav<>uid://6kbrm3fndbim::::res://SFX/Weapon_Shot.wav
+bullet.tscn::PackedScene::8596552277846107272::1689206483::0::1::::<><>::res://Scripts/Bullet.gd<>uid://c71r623bsraju::::res://Assets/Enemies/Bullet.png
+carro.tscn::PackedScene::7194043151438557998::1688677495::0::1::::<><>::uid://qx3yyur7i3t7
 Dash.tscn::PackedScene::6277488676608680547::1683496680::0::1::::<><>::res://Scripts/Dash.gd
 DashGhost.tscn::PackedScene::6105262020320236352::1683496680::0::1::::<><>::res://Scripts/DashGhost.gd
 DebugText.tscn::PackedScene::4968408277337039443::1684352179::0::1::::<><>::res://Scripts/DebugText.gd
-dialog_hud.tscn::PackedScene::8378654672995345405::1688677495::0::1::::<><>::res://Scripts/dialog_hud.gd<>uid://1vrt2gjs3gmy::::res://Assets/Dialog/IrisPortrait.png<>uid://bfgslgu4lfhx3::::res://Fonts/VCR_OSD_MONO_1.001.ttf<>uid://lj7cnpsegn8s::::res://Assets/Dialog/RadPortrait.png
+dialog_hud.tscn::PackedScene::8378654672995345405::1689206530::0::1::::<><>::res://Scripts/dialog_hud.gd<>uid://1vrt2gjs3gmy::::res://Assets/Dialog/IrisPortrait.png<>uid://bfgslgu4lfhx3::::res://Fonts/VCR_OSD_MONO_1.001.ttf<>uid://lj7cnpsegn8s::::res://Assets/Dialog/RadPortrait.png<>uid://c0qcopiaexbiy::::res://SFX/Iris Voice/1.ogg
 Fall Limit.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Scripts/Fall Limit.gd
 fps_label.tscn::PackedScene::7907610858445273790::1684200776::0::1::::<><>::uid://r7pa3bx4t8xj<>res://Scripts/fps_label.gd
-iris.tscn::PackedScene::7247335736116279066::1688677495::0::1::::<><>::uid://osp5txtbct85::::res://Assets/NPC/Iris.png<>res://Scripts/NPC.gd
-menu.tscn::PackedScene::2568660013530004849::1689119054::0::1::::<><>::res://Scripts/menu.gd<>uid://cihewlw08338i::::res://LogoFullHD.png<>uid://bv6ucyhl2e1we::::res://main_theme.tres<>res://menu.gdshader<>uid://cw0fgrjbd5q75::::res://Music/Project Rapid - Menu.wav<>uid://4gl8b3pyveru::::res://Dark-Red-Wallpaper-Desktop-Aesthetic-Comitatofesteteolo.xyz-1.png<>res://Scripts/2dLogoRotate.gd<>uid://bke4rotccdx3p::::res://SFX/Menu/MENU_Pick.wav<>uid://c1ggdq8mok2ko::::res://SFX/Menu/MESSAGE-B_Accept.wav<>uid://v6o0avnkxy0i::::res://SFX/Menu/MESSAGE-B_Decline.wav<>uid://berocfpgtpg03::::res://SFX/Menu/MENU A_Select.wav<>uid://p13iwbpwchff::::res://SFX/Menu/MENU A - Back.wav<>uid://b3w30g2cihos3::::res://Scenes/settings_menu.tscn<>uid://dkwrgwa2lse5s::::res://Scenes/fps_label.tscn
-Player.tscn::PackedScene::2297226001175561861::1689119054::0::1::::<><>::res://Scripts/Player.gd<>uid://bb24ww0emtx4o::::res://Assets/Player/Player.png<>res://Scripts/Camera.gd<>uid://64sosbupuu77::::res://SFX/Player/Boost.wav<>uid://0hddhxn7ofn1::::res://SFX/Player/Charge.wav<>uid://woi81hu2tnmx::::res://SFX/Player/Jump.wav<>uid://d3018kibc3fgx::::res://SFX/Player/Jump_Charge.wav<>uid://b5us2cwafs4ld::::res://SFX/Player/Pickup.wav<>uid://dutigd31wiufa::::res://SFX/Spring.wav<>uid://bfgslgu4lfhx3::::res://Fonts/VCR_OSD_MONO_1.001.ttf<>uid://cvo4k6qneyjmh::::res://Scenes/Dash.tscn<>uid://cc1y7t7ketwv0::::res://Scenes/DebugText.tscn
-bb.tscn::PackedScene::4170381270658434871::1689119054::0::1::::<><>::uid://dfn5blf0ukrdq::::res://Assets/Enemies/BB.png<>res://Scripts/bb.gd<>uid://1thhh3t8ab7w::::res://SFX/EnemyHit.wav
-bullet.tscn::PackedScene::8596552277846107272::1689119055::0::1::::<><>::res://Scripts/Bullet.gd<>uid://c71r623bsraju::::res://Assets/Enemies/Bullet.png
+iris.tscn::PackedScene::7247335736116279066::1688677495::0::1::::<><>::uid://osp5txtbct85
+menu.tscn::PackedScene::2568660013530004849::1689206482::0::1::::<><>::res://Scripts/menu.gd<>uid://cihewlw08338i::::res://LogoFullHD.png<>uid://bv6ucyhl2e1we::::res://main_theme.tres<>res://menu.gdshader<>uid://cw0fgrjbd5q75::::res://Music/Project Rapid - Menu.wav<>uid://4gl8b3pyveru::::res://Dark-Red-Wallpaper-Desktop-Aesthetic-Comitatofesteteolo.xyz-1.png<>res://Scripts/2dLogoRotate.gd<>uid://bke4rotccdx3p::::res://SFX/Menu/MENU_Pick.wav<>uid://c1ggdq8mok2ko::::res://SFX/Menu/MESSAGE-B_Accept.wav<>uid://v6o0avnkxy0i::::res://SFX/Menu/MESSAGE-B_Decline.wav<>uid://berocfpgtpg03::::res://SFX/Menu/MENU A_Select.wav<>uid://p13iwbpwchff::::res://SFX/Menu/MENU A - Back.wav<>uid://b3w30g2cihos3::::res://Scenes/settings_menu.tscn<>uid://dkwrgwa2lse5s::::res://Scenes/fps_label.tscn
+Player.tscn::PackedScene::2297226001175561861::1689206483::0::1::::<><>::res://Scripts/Player.gd<>uid://bb24ww0emtx4o::::res://Assets/Player/Player.png<>res://Scripts/Camera.gd<>uid://64sosbupuu77::::res://SFX/Player/Boost.wav<>uid://0hddhxn7ofn1::::res://SFX/Player/Charge.wav<>uid://woi81hu2tnmx::::res://SFX/Player/Jump.wav<>uid://d3018kibc3fgx::::res://SFX/Player/Jump_Charge.wav<>uid://b5us2cwafs4ld::::res://SFX/Player/Pickup.wav<>uid://dutigd31wiufa::::res://SFX/Spring.wav<>uid://bfgslgu4lfhx3::::res://Fonts/VCR_OSD_MONO_1.001.ttf<>uid://cvo4k6qneyjmh::::res://Scenes/Dash.tscn<>uid://cc1y7t7ketwv0::::res://Scenes/DebugText.tscn
 respawn_effect.tscn::PackedScene::2681767116298068141::1688677495::0::1::::<><>::res://Scripts/respawn_effect.gd
 scene_transition.tscn::PackedScene::5334080843130706799::1688677495::0::1::::<><>::res://Scripts/scene_transition.gd
-settings_menu.tscn::PackedScene::4398869693744079856::1688677495::0::1::::<><>::uid://bv6ucyhl2e1we::::res://main_theme.tres<>res://Scripts/settings_menu.gd<>uid://dyhsg2j4272wr::::res://Fonts/ethnocentric rg.otf
+settings_menu.tscn::PackedScene::4398869693744079856::1688677495::0::1::::<><>::uid://bv6ucyhl2e1we
 Slope_Left2.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureSlope6.png
 Slope_Left.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureSlope1.png
 Slope_Left_Steep2.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureSlope8.png
@@ -161,22 +162,24 @@ Slope_Right2.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/Proto
 Slope_Right.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureSlope2.png
 Slope_Right_Steep2.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureSlope7.png
 Slope_Right_Steep.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureSlope4.png
-spring.tscn::PackedScene::5252173594637123046::1688677495::0::1::::<><>::uid://ciw0qemhdi00::::res://Assets/Spring.png<>res://Scripts/spring.gd
+spring.tscn::PackedScene::5252173594637123046::1688677495::0::1::::<><>::uid://ciw0qemhdi00
 Test Tileset.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Scenes/Slope_Right_Steep.tscn<>res://Scenes/Wall.tscn<>res://Scenes/WallHalfTop.tscn<>res://Scenes/Slope_Left.tscn<>res://Scenes/Slope_Left_Steep.tscn<>res://Scenes/Slope_Right.tscn<>res://Scenes/Slope_Left_Steep2.tscn<>res://Scenes/Slope_Right_Steep2.tscn<>res://Scenes/Slope_Right2.tscn<>res://Scenes/Slope_Left2.tscn<>res://Scenes/WallHalfBot.tscn
-ui.tscn::PackedScene::200589645504965064::1689119055::0::1::::<><>::res://Scripts/ui.gd<>uid://bv6ucyhl2e1we::::res://main_theme.tres<>uid://b2xpfxx7sxh37::::res://Assets/EnergyBar.png
+ui.tscn::PackedScene::200589645504965064::1689206483::0::1::::<><>::res://Scripts/ui.gd<>uid://bv6ucyhl2e1we::::res://main_theme.tres<>uid://b2xpfxx7sxh37::::res://Assets/EnergyBar.png
 Wall.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTexture1.png
 WallHalfBot.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureHalf2.png
 WallHalfTop.tscn::PackedScene::-1::1683496680::0::1::::<><>::res://Assets/PrototypeTextureHalf1.png
-::res://Scripts/::1689119051
+::res://Scripts/::1689277648
 2dLogoRotate.gd::GDScript::-1::1684170653::0::1::::<>Sprite2D<>::
 3DLogo.gd::GDScript::-1::1683842707::0::1::::<>Sprite3D<>::
-Arachnix.gd::GDScript::-1::1689113505::0::1::::<>CharacterBody2D<>::
+Arachnix.gd::GDScript::-1::1689200079::0::1::::<>CharacterBody2D<>::
+bb.gd::GDScript::-1::1689200010::0::1::::<>CharacterBody2D<>::
+Bullet.gd::GDScript::-1::1689119051::0::1::::<>Node2D<>::
 Camera.gd::GDScript::-1::1687975612::0::1::::<>Camera2D<>::
 Carro.gd::GDScript::-1::1688172363::0::1::::<>AnimatedSprite2D<>::
 Dash.gd::GDScript::-1::1683496680::0::1::::<>Node2D<>::
 DashGhost.gd::GDScript::-1::1683496680::0::1::::<>Sprite2D<>::
 DebugText.gd::GDScript::-1::1684275064::0::1::::<>Node<>::
-dialog_hud.gd::GDScript::-1::1688598774::0::1::::<>Node2D<>::
+dialog_hud.gd::GDScript::-1::1689206524::0::1::::<>Node2D<>::
 Fall Limit.gd::GDScript::-1::1683496680::0::1::::<>Area2D<>::
 fps_label.gd::GDScript::-1::1684198960::0::1::::<>Label<>::
 Game.gd::GDScript::-1::1683496680::0::1::::<>Node<>::
@@ -188,8 +191,7 @@ menu.gd::GDScript::-1::1686349334::0::1::::<>Node2D<>::
 NPC.gd::GDScript::-1::1688591625::0::1::::<>AnimatedSprite2D<>::
 Player(Old).gd::GDScript::-1::1683496680::0::1::::<>CharacterBody2D<>::
 Player.gd::GDScript::-1::1689111719::0::1::::<>CharacterBody2D<>::
-bb.gd::GDScript::-1::1689118636::0::1::::<>CharacterBody2D<>::
-Bullet.gd::GDScript::-1::1689119051::0::1::::<>Node2D<>::
+Hammerhead.gd::GDScript::-1::1689277648::0::1::::<>CharacterBody2D<>::
 RespawnPoint.gd::GDScript::-1::1688604911::0::1::::<>Sprite2D<>::
 respawn_effect.gd::GDScript::-1::1688606280::0::1::::<>CanvasLayer<>::
 scene_transition.gd::GDScript::-1::1684454086::0::1::::<>CanvasLayer<>::
@@ -198,10 +200,12 @@ spring.gd::GDScript::-1::1685069313::0::1::::<>AnimatedSprite2D<>::
 TestCam.gd::GDScript::-1::1684538379::0::1::::<>Camera2D<>::
 trail_fade.gd::GDScript::-1::1683496680::0::1::::<>Sprite2D<>::
 ui.gd::GDScript::-1::1685643682::0::1::::<>Control<>::
-::res://SFX/::1689119105
+::res://SFX/::1689206139
 EnemyHit.wav::AudioStreamWAV::1864571043248026314::1687561911::1687561946::1::::<><>::
 Spring.wav::AudioStreamWAV::8602758753908279898::1684943393::1684943437::1::::<><>::
 Weapon_Shot.wav::AudioStreamWAV::2196589679588145576::1689119105::1689119106::1::::<><>::
+::res://SFX/Iris Voice/::1689206529
+1.ogg::AudioStreamOggVorbis::6560739737717107876::1689206147::1689206147::1::::<><>::
 ::res://SFX/Menu/::1684200660
 ALERT_Error.wav::AudioStreamWAV::9072441139628566840::1684170935::1684200660::1::::<><>::
 MENU A - Back.wav::AudioStreamWAV::1108221996094265307::1684170935::1684200660::1::::<><>::

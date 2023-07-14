@@ -67,8 +67,8 @@ func _on_hit_box_area_entered(area):
 				$sfx_hit.play()
 				
 	else :
-		$FloorBox.call_deferred("is_disabled", false)
-		$HitBox/CollisionShape2D.call_deferred("is_disabled", false)
+		$FloorBox.disabled = false
+		$HitBox/CollisionShape2D.disabled = false
 
 
 func _on_back_check_area_entered(area):
