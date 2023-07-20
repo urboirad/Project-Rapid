@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 @export var direction = 1
 
+@onready var vfx_hit = preload("res://Scenes/vfx_hit.tscn")
+@onready var vfx_hitSpark = preload("res://Scenes/vfx_hit_spark.tscn")
+@onready var explosion = preload("res://Scenes/vfx_explosion.tscn")
+
 var speed = 5
 
 var trans = 0
@@ -68,6 +72,13 @@ func _on_hit_box_area_entered(area):
 			$FloorBox.disabled = true
 			$HitBox/CollisionShape2D.disabled = true
 			if GlobalVariables.player_dashing:
+				var s = vfx_hitSpark.instantiate()
+				var h = vfx_hit.instantiate()
+				get_parent().add_child(s)
+				get_parent().add_child(h)
+				s.position = position
+				h.position = position
+				h.position.y = position.y - 20
 				$FloorBox.queue_free()
 				$HitBox/CollisionShape2D.queue_free()
 				$FrontCheck/CollisionShape2D.queue_free()
@@ -90,6 +101,9 @@ func _on_animated_sprite_2d_animation_finished():
 func _on_hammer_box_body_entered(body):
 	if not body.is_in_group("player"):
 		if charging && trans == 1:
+			var e = explosion.instantiate()
+			get_parent().add_child(e)
+			e.position = position
 			queue_free()
 	if body.is_in_group("player") && !GlobalVariables.player_dashing:
 		if direction == 1:

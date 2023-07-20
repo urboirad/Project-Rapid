@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvcvgle6sbbif"]
+
+[ext_resource type="Script" path="res://Scripts/splash.gd" id="1_cas7g"]
+[ext_resource type="Texture2D" uid="uid://bhbe8t8e3aks1" path="res://Assets/2023_Logo.png" id="1_cqw0a"]
+
+[node name="Splash" type="Node2D"]
+script = ExtResource("1_cas7g")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(624, 348)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_cqw0a")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

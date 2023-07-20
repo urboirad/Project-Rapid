@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+@onready var vfx_collect = preload("res://Scenes/vfx_collect.tscn")
+@onready var vfx_hit = preload("res://Scenes/vfx_hit.tscn")
+@onready var vfx_hitSpark = preload("res://Scenes/vfx_hit_spark.tscn")
+
 var energy = 100
 var hurt = false
 
@@ -78,7 +82,10 @@ func _physics_process(delta):
 	dash(delta)
 	
 	# Invinsibility
-
+	if !$Invincibilty.timeout:
+		$Hitbox/AreaShape.disabled = true
+	else:
+		$Hitbox/AreaShape.disabled = false
 		
 	if !isDashing: # If Player isn't Dashing
 		if !hurt:
@@ -431,8 +438,11 @@ func _on_hitbox_area_entered(area):
 		sfx_spring.play()
 		velocity.y = -260
 	if area.is_in_group("carro"):
+		var effect = vfx_collect.instantiate()
+		get_parent().add_child(effect)
+		effect.position = position
+		effect.position.y = position.y + 20
 		sfx_pickup.play()
-		pass
 	if area.is_in_group("enemy") && !isDashing:
 		$Invincibilty.start()
 		hurt = true
@@ -452,6 +462,15 @@ func _on_hitbox_area_entered(area):
 			position.x = GlobalVariables.RespawnX
 			position.y = GlobalVariables.RespawnY
 			GlobalVariables.player_energy = 100
+		if area.is_in_group("enemy") && isDashing:
+			var effect = vfx_hit.instantiate()
+			var effect2 = vfx_hitSpark.instantiate()
+			get_parent().add_child(effect)
+			get_parent().add_child(effect2)
+			effect.position = position
+			effect2.position = Vector2(position.x,position.y + 20)
+			#remove_child(effect)
+			#remove_child(effect2)
 			
 	if area.is_in_group("NPC"):
 		pass

@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@onready var vfx_hit = preload("res://Scenes/vfx_hit.tscn")
+@onready var vfx_hitSpark = preload("res://Scenes/vfx_hit_spark.tscn")
+
 @export var direction = 1
 @export var bullet = preload("res://Scenes/bullet.tscn")
 var shooting = false
@@ -56,6 +59,13 @@ func _on_hit_box_area_entered(area):
 			$FloorBox.call_deferred("is_disabled", true)
 			$HitBox/CollisionShape2D.call_deferred("is_disabled", true)
 			if GlobalVariables.player_dashing:
+				var s = vfx_hitSpark.instantiate()
+				var h = vfx_hit.instantiate()
+				get_parent().add_child(s)
+				get_parent().add_child(h)
+				s.position = position
+				h.position = position
+				h.position.y = position.y - 20
 				$FloorBox.queue_free()
 				$HitBox/CollisionShape2D.queue_free()
 				$FrontCheck/CollisionShape2D.queue_free()

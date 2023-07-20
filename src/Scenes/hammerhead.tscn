@@ -141,7 +141,7 @@ size = Vector2(7, 12)
 size = Vector2(25, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6atqt"]
-size = Vector2(36, 36)
+size = Vector2(54, 36)
 
 [node name="Hammerhead" type="CharacterBody2D"]
 script = ExtResource("1_s7dyk")
@@ -172,7 +172,7 @@ debug_color = Color(0.972549, 0, 0.443137, 0.419608)
 [node name="FrontCheck" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FrontCheck"]
-position = Vector2(-26, -2)
+position = Vector2(-35, -2)
 shape = SubResource("RectangleShape2D_6atqt")
 debug_color = Color(0.388235, 0.611765, 0, 0.419608)
 

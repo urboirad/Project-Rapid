@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+@onready var world = get_node("World")
+@onready var vfx_hit = preload("res://Scenes/vfx_hit.tscn")
+@onready var vfx_hitSpark = preload("res://Scenes/vfx_hit_spark.tscn")
+
 const JUMP_VELOCITY = -300.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -74,7 +78,7 @@ func _on_back_check_area_entered(area):
 
 
 func _on_hit_box_area_entered(area):
-	var knockback = 150
+	var knockback = 100
 	if area.is_in_group("player"):
 		if !dead:
 			$FloorBox.disabled = true
@@ -89,6 +93,13 @@ func _on_hit_box_area_entered(area):
 				velocity.x = 0
 				velocity.x = velocity.x - knockback
 			if GlobalVariables.player_dashing:
+				var s = vfx_hitSpark.instantiate()
+				var h = vfx_hit.instantiate()
+				get_parent().add_child(s)
+				get_parent().add_child(h)
+				s.position = position
+				h.position = position
+				h.position.y = position.y - 20
 				$FloorBox.queue_free()
 				$HitBox/CollisionShape2D.queue_free()
 				$FC.queue_free()
