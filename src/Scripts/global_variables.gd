@@ -16,6 +16,8 @@ var dia_isTalking = ""
 var RespawnX = 0
 var RespawnY = 0
 
+var lastTime = ""
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

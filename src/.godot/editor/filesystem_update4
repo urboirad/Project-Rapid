@@ -13,3 +13,11 @@ res://Scenes/hammerhead.tscn
 res://Scripts/Player.gd
 res://Scripts/Arachnix.gd
 res://Scripts/bb.gd
+res://Scenes/ui.tscn
+res://Scripts/global_variables.gd
+res://Scripts/ui.gd
+res://Scenes/results_screen.tscn
+res://Scripts/results_screen.gd
+res://Scenes/scene_transition.tscn
+res://Scripts/scene_transition.gd
+res://Scripts/menu.gd

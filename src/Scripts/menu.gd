@@ -18,6 +18,7 @@ var sfxPlay = false
 var cur_option = 0
 
 func _ready():
+	
 	cur_option = 1
 
 func _process(delta):

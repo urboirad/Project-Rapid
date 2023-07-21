@@ -3,9 +3,12 @@ extends CharacterBody2D
 @onready var vfx_collect = preload("res://Scenes/vfx_collect.tscn")
 @onready var vfx_hit = preload("res://Scenes/vfx_hit.tscn")
 @onready var vfx_hitSpark = preload("res://Scenes/vfx_hit_spark.tscn")
+@onready var results_screen = preload("res://Scenes/results_screen.tscn")
+@onready var ui = preload("res://Scenes/ui.tscn")
 
 var energy = 100
 var hurt = false
+var stop_moving = false
 
 # Nodes
 @onready var hitbox_area = $Hitbox
@@ -164,8 +167,10 @@ func _physics_process(delta):
 	elif !slopeCast.is_colliding() && gL.is_colliding() && velocity.x <= -300 && Anim.rotation > -0.8 && Anim.rotation < -0.0:
 		if is_on_floor():
 			jump()
-		
-	move_and_slide()
+	if !stop_moving:
+		move_and_slide()
+	else:
+		$AnimatedSprite2D.play("Idle")
 	
 	if state == 0:
 		$AnimatedSprite2D.self_modulate.r = 1
@@ -434,6 +439,8 @@ func _on_trail_timer_timeout():
 
 
 func _on_hitbox_area_entered(area):
+	if area.is_in_group("goal"):
+		SceneTransition.quick_fade_white("res://Scenes/results_screen.tscn")
 	if area.is_in_group("spring"):
 		sfx_spring.play()
 		velocity.y = -260

@@ -34,5 +34,9 @@ func _process(delta):
 	timeLabel = "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
 	$Container/Top/TimerLabel.text = timeLabel
 	
+	
+	GlobalVariables.lastTime = timeLabel
+	
 	# Score
 	$Container/Top/ScoreLabel.text = str(GlobalVariables.player_score)
+	
