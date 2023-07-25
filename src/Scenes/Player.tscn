@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://7y18g7xxsba8"]
+[gd_scene load_steps=45 format=3 uid="uid://7y18g7xxsba8"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bb24ww0emtx4o" path="res://Assets/Player/Player.png" id="2"]
@@ -10,6 +10,9 @@
 [ext_resource type="AudioStream" uid="uid://b5us2cwafs4ld" path="res://SFX/Player/Pickup.wav" id="9_uvtlg"]
 [ext_resource type="AudioStream" uid="uid://dutigd31wiufa" path="res://SFX/Spring.wav" id="10_mjm4w"]
 [ext_resource type="FontFile" uid="uid://bfgslgu4lfhx3" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="12_3ih1g"]
+[ext_resource type="AudioStream" uid="uid://hjrmin10dij5" path="res://Music/Project Rapid - Tutorial.wav" id="13_byqo0"]
+[ext_resource type="AudioStream" uid="uid://dndklwso8p68i" path="res://Music/Project Rapid - Frontier Foothills.wav" id="14_eq76h"]
+[ext_resource type="AudioStream" uid="uid://dplb2jrxk64j6" path="res://SFX/DJscratch.wav" id="15_twawr"]
 [ext_resource type="PackedScene" uid="uid://cvo4k6qneyjmh" path="res://Scenes/Dash.tscn" id="22"]
 [ext_resource type="PackedScene" uid="uid://cc1y7t7ketwv0" path="res://Scenes/DebugText.tscn" id="42"]
 
@@ -302,7 +305,7 @@ position = Vector2(0, 16)
 target_position = Vector2(0, 22)
 
 [node name="slopeDetect" type="RayCast2D" parent="."]
-position = Vector2(0, 25)
+position = Vector2(0, 24)
 target_position = Vector2(24, 0)
 
 [node name="groundDetectR" type="RayCast2D" parent="."]
@@ -389,8 +392,29 @@ offset_bottom = 10.0
 theme_override_fonts/font = ExtResource("12_3ih1g")
 text = "hurt"
 
+[node name="ta" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_byqo0")
+volume_db = -12.772
+autoplay = true
+bus = &"Music"
+
+[node name="ff" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-124, -1504)
+stream = ExtResource("14_eq76h")
+volume_db = 5.474
+bus = &"Music"
+
+[node name="djs" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-124, -1504)
+stream = ExtResource("15_twawr")
+volume_db = 10.035
+bus = &"Music"
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
 [connection signal="timeout" from="trailTimer" to="." method="_on_trail_timer_timeout"]
 [connection signal="timeout" from="Invincibilty" to="." method="_on_invincibilty_timeout"]
+[connection signal="finished" from="ta" to="." method="_on_ta_finished"]
+[connection signal="finished" from="ff" to="." method="_on_ff_finished"]
+[connection signal="finished" from="djs" to="." method="_on_djs_finished"]

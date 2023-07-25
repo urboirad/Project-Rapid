@@ -6,20 +6,21 @@ extends CharacterBody2D
 @onready var vfx_hitSpark = preload("res://Scenes/vfx_hit_spark.tscn")
 @onready var explosion = preload("res://Scenes/vfx_explosion.tscn")
 
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 var speed = 5
 
 var trans = 0
 var charging = false
 var dead = false
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
 func _ready():
 	pass
 	
 func _physics_process(delta):
 	$Label.text = str(trans)
+	
+	velocity.y += gravity * delta
 	
 	# Animation
 	if direction == 1 && !dead:
@@ -85,6 +86,7 @@ func _on_hit_box_area_entered(area):
 				$despawn.start()
 				GlobalVariables.player_energy += 20
 				GlobalVariables.camera.shake(0.2,1)
+				GlobalVariables.player_score += 100
 				dead = true
 				$sfx_hit.play()
 				
@@ -103,6 +105,7 @@ func _on_hammer_box_body_entered(body):
 		if charging && trans == 1:
 			var e = explosion.instantiate()
 			get_parent().add_child(e)
+			$sfx_exlpode.play()
 			e.position = position
 			queue_free()
 	if body.is_in_group("player") && !GlobalVariables.player_dashing:

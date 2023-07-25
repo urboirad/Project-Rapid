@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://bmiqs2p1lft7o"]
+[gd_scene load_steps=25 format=3 uid="uid://bmiqs2p1lft7o"]
 
 [ext_resource type="Script" path="res://Scripts/Hammerhead.gd" id="1_s7dyk"]
 [ext_resource type="Texture2D" uid="uid://dlpq0wwo36qr" path="res://Assets/Enemies/Hammerhead.png" id="2_i5g0f"]
 [ext_resource type="AudioStream" uid="uid://1thhh3t8ab7w" path="res://SFX/EnemyHit.wav" id="3_gnvap"]
+[ext_resource type="AudioStream" uid="uid://fg0qn67f7uri" path="res://SFX/Explosion.wav" id="4_dnbwg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olpdr"]
 atlas = ExtResource("2_i5g0f")
@@ -138,7 +139,7 @@ animations = [{
 size = Vector2(7, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srnoq"]
-size = Vector2(25, 20)
+size = Vector2(28, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6atqt"]
 size = Vector2(54, 36)
@@ -162,10 +163,10 @@ shape = SubResource("RectangleShape2D_hlcd3")
 disabled = true
 debug_color = Color(0.968627, 0, 0.458824, 0.419608)
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(1.5, 6)
+position = Vector2(3, 6)
 shape = SubResource("RectangleShape2D_srnoq")
 debug_color = Color(0.972549, 0, 0.443137, 0.419608)
 
@@ -191,6 +192,9 @@ offset_top = -38.0
 offset_right = 38.0
 offset_bottom = -12.0
 text = "0"
+
+[node name="sfx_exlpode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dnbwg")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HammerBox" to="." method="_on_hammer_box_body_entered"]

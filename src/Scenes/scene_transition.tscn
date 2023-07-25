@@ -122,6 +122,7 @@ _data = {
 }
 
 [node name="scene_transition" type="CanvasLayer"]
+layer = 3
 script = ExtResource("1_qcbeu")
 
 [node name="dissolve_rect" type="ColorRect" parent="."]

@@ -73,6 +73,7 @@ func _on_hit_box_area_entered(area):
 				$despawn.start()
 				GlobalVariables.player_energy += 20
 				GlobalVariables.camera.shake(0.2,1)
+				GlobalVariables.player_score += 100
 				dead = true
 				$sfx_hit.play()
 				

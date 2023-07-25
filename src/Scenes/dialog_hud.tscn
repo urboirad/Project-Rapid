@@ -143,6 +143,7 @@ _data = {
 script = ExtResource("1_nesx4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 4
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 offset_left = 432.0

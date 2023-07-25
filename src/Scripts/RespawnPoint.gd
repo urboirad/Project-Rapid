@@ -1,8 +1,9 @@
 extends Sprite2D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(Input.get_joy_name(0))
+	visible = false
 	GlobalVariables.RespawnX = position.x
 	GlobalVariables.RespawnY = position.y
 

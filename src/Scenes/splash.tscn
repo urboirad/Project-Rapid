@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvcvgle6sbbif"]
+[gd_scene load_steps=4 format=3 uid="uid://cvcvgle6sbbif"]
 
 [ext_resource type="Script" path="res://Scripts/splash.gd" id="1_cas7g"]
 [ext_resource type="Texture2D" uid="uid://bhbe8t8e3aks1" path="res://Assets/2023_Logo.png" id="1_cqw0a"]
+[ext_resource type="Theme" uid="uid://bv6ucyhl2e1we" path="res://main_theme.tres" id="3_3ymsh"]
 
 [node name="Splash" type="Node2D"]
 script = ExtResource("1_cas7g")
@@ -22,7 +23,18 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_cqw0a")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 176.0
+offset_top = 432.0
+offset_right = 1043.0
+offset_bottom = 480.0
+theme = ExtResource("3_3ymsh")
+text = "Please note that this demo is a proof of concept.
+and as such, some bugs and issues may be present during gameplay."
+horizontal_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

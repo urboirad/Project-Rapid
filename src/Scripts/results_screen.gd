@@ -14,4 +14,4 @@ func _process(delta):
 	$CanvasLayer/LabelScore.text = "SCORE: " + str(GlobalVariables.player_score)
 	
 	if Input.is_action_just_pressed("jump"):
-		SceneTransition.quick_fade("res://Scenes/menu.tscn")
+		SceneTransition.quick_fade("res://Scenes/splash.tscn")

@@ -29,7 +29,7 @@ func _process(delta):
 			music.stream_paused = true
 			if !sfx_accept.playing:
 				sfx_accept.play(0.0)
-			SceneTransition.fade("res://World.tscn")
+			SceneTransition.fade("res://Scenes/demo_level.tscn")
 	elif cur_option == 2:
 		settingsButton.grab_focus()
 		if Input.is_action_just_pressed("jump"):
@@ -60,7 +60,7 @@ func _process(delta):
 		music.stream_paused = true
 		if !sfx_accept.playing:
 			sfx_accept.play(0.0)
-		SceneTransition.fade("res://World.tscn")
+		SceneTransition.fade("res://Scenes/demo_level.tscn")
 			
 	if settingsButton.button_pressed:
 		if !sfx_select.playing:

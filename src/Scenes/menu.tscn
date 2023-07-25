@@ -27,7 +27,7 @@ shader_parameter/speed_vertical = 0.0
 shader_parameter/scroll_direction = Vector2(1, 0)
 shader_parameter/scrolling_speed = 0.08
 shader_parameter/enable_palette_cycling = false
-shader_parameter/palette_speed = 0.0
+shader_parameter/palette_speed = 0.1
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_7xier")
@@ -43,7 +43,8 @@ theme = ExtResource("3_x4i4m")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="TextureRect" parent="Control"]
-texture_repeat = 2
+texture_filter = 1
+texture_repeat = 3
 material = SubResource("ShaderMaterial_j3ywp")
 layout_mode = 1
 anchors_preset = 15
@@ -56,6 +57,7 @@ offset_bottom = 924.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_c7h14")
+stretch_mode = 2
 
 [node name="Logo" type="Sprite2D" parent="Control"]
 position = Vector2(636, 382)

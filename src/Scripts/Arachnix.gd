@@ -86,12 +86,12 @@ func _on_hit_box_area_entered(area):
 				$HitBox/CollisionShape2D.disabled = true
 				velocity.y = JUMP_VELOCITY
 				velocity.x = 0
-				velocity.x = velocity.x + knockback
+				velocity.x += knockback
 			else:
 				$HitBox/CollisionShape2D.disabled = true
 				velocity.y = JUMP_VELOCITY
 				velocity.x = 0
-				velocity.x = velocity.x - knockback
+				velocity.x -= knockback
 			if GlobalVariables.player_dashing:
 				var s = vfx_hitSpark.instantiate()
 				var h = vfx_hit.instantiate()
@@ -107,6 +107,7 @@ func _on_hit_box_area_entered(area):
 				$despawn.start()
 				GlobalVariables.player_energy += 20
 				GlobalVariables.camera.shake(0.2,1)
+				GlobalVariables.player_score += 100
 				dead = true
 				$sfx_hit.play()
 				
@@ -123,5 +124,6 @@ func _on_despawn_timeout():
 
 func _on_fc_area_entered(area):
 	if area.is_in_group("player"):
-		jumping = true
-		$Cooldown.start()
+		if is_on_floor():
+			jumping = true
+			$Cooldown.start()

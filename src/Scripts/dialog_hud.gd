@@ -70,6 +70,16 @@ func _process(delta):
 	# Dialog Switch
 	if curDia == "test" && curDiaLine == 2:
 		say_Test2("Iris", 1)
+		
+	if curDia == "tut1" && curDiaLine == 2:
+		say_D2("Iris", 1)
+		
+	#if curDia == "tut3" && curDiaLine == 2:
+		#say_D5("Iris", 1)
+	#if curDia == "tut3" && curDiaLine == 3:
+		#say_D6("Iris", 1)
+	#if curDia == "tut3" && curDiaLine == 4:
+		#say_D7("Iris", 1)
 
 # Dialog
 
@@ -95,6 +105,165 @@ func say_Test2(character, speed):
 	GlobalVariables.dia_isTalking = character
 	text.visible_characters = 0
 	text.text = "This is the second test dialog. :O"
+	spell = true
+	spellSpeed = speed
+	ttimer.start()
+	await ttimer.timeout
+	ap.play("out")
+	GlobalVariables.dia_isTalking = ""
+	curDia = ""
+	
+func say_D1(character, speed):
+	por.visible = true
+	text.visible = true
+	ap.play("in")
+	curDia = "tut1"
+	curDiaLine = 1
+	GlobalVariables.dia_isTalking = character
+	text.visible_characters = 0
+	text.text = "Hey Rapid! Its Iris. The core were looking for should be somewhere in this forest."
+	spell = true
+	spellSpeed = speed
+	ttimer.start()
+	await ttimer.timeout
+	curDiaLine = 2
+	
+func say_D2(character, speed):
+	por.visible = true
+	text.visible = true
+	ap.play("in")
+	curDia = "tut1"
+	curDiaLine = 3
+	GlobalVariables.dia_isTalking = character
+	text.visible_characters = 0
+	if Input.get_joy_name(0) == "":
+		text.text = "To get going you can use the Arrow Keys to move."
+	else:
+		text.text = "To get going you can use the Left Joystick to move."
+	spell = true
+	spellSpeed = speed
+	ttimer.start()
+	await ttimer.timeout
+	ap.play("out")
+	GlobalVariables.dia_isTalking = ""
+	curDia = ""
+
+func say_D3(character, speed):
+	por.visible = true
+	text.visible = true
+	ap.play("in")
+	curDia = "tut2"
+	GlobalVariables.dia_isTalking = character
+	text.visible_characters = 0
+	if Input.get_joy_name(0) == "":
+		text.text = "You can jump with [Z]."
+	if Input.get_joy_name(0) == "PowerA Switch Controller":
+		text.text = "You can jump with the (B) button."
+	if Input.get_joy_name(0) == "PS4 Controller":
+		text.text = "You can jump with the (X) button."
+	if Input.get_joy_name(0) == "Xbox One Controller":
+		text.text = "You can jump with the (A) button."
+	spell = true
+	spellSpeed = speed
+	ttimer.start()
+	await ttimer.timeout
+	ap.play("out")
+	GlobalVariables.dia_isTalking = ""
+	curDia = ""
+
+func say_D4(character, speed):
+	por.visible = true
+	text.visible = true
+	ap.play("in")
+	curDia = "tut3"
+	#curDiaLine = 1
+	GlobalVariables.dia_isTalking = character
+	text.visible_characters = 0
+	text.text = "Those boots are pretty awesome arent they."
+	spell = true
+	spellSpeed = speed
+	ttimer.start()
+	await ttimer.timeout
+	#curDiaLine = 2
+	say_D5("Iris",1)
+	
+func say_D5(character, speed):
+	por.visible = true
+	text.visible = true
+	ap.play("in")
+	curDia = "tut3"
+	#curDiaLine = 3
+	GlobalVariables.dia_isTalking = character
+	text.visible_characters = 0
+	text.text = "You can charge your jump by holding down and holding the jump button. Releasing any will give you some height."
+	spell = true
+	spellSpeed = speed
+	ttimer.start()
+	await ttimer.timeout
+	#curDiaLine = 4
+	say_D6("Iris",1)
+
+func say_D6(character, speed):
+	por.visible = true
+	text.visible = true
+	ap.play("in")
+	curDia = "tut3"
+	#curDiaLine = 5
+	GlobalVariables.dia_isTalking = character
+	text.visible_characters = 0
+	text.text = "This uses alot of energy so use it wisely."
+	spell = true
+	spellSpeed = speed
+	ttimer.start()
+	await ttimer.timeout
+	say_D7("Iris", 1)
+
+func say_D7(character, speed):
+	por.visible = true
+	text.visible = true
+	ap.play("in")
+	curDia = "tut3"
+	#curDiaLine = 5
+	GlobalVariables.dia_isTalking = character
+	text.visible_characters = 0
+	if Input.get_joy_name(0) == "":
+		text.text = "You can also dash with [X]."
+	if Input.get_joy_name(0) == "PowerA Switch Controller" or Input.get_joy_name(0) == "Xbox One Controller":
+		text.text = "You can also dash with the (Y) button"
+	if Input.get_joy_name(0) == "PS4 Controller":
+		text.text = "You can also dash with the (□) button."
+	spell = true
+	spellSpeed = speed
+	ttimer.start()
+	await ttimer.timeout
+	ap.play("out")
+	GlobalVariables.dia_isTalking = ""
+	curDia = ""
+	
+func say_D8(character, speed):
+	por.visible = true
+	text.visible = true
+	ap.play("in")
+	curDia = "tut4"
+	GlobalVariables.dia_isTalking = character
+	text.visible_characters = 0
+	text.text = "Seems you remember the basics. Don't forget that these boots are pretty hard to control. Good Luck."
+	spell = true
+	spellSpeed = speed
+	ttimer.start()
+	await ttimer.timeout
+	ap.play("out")
+	GlobalVariables.dia_isTalking = ""
+	curDia = ""
+	
+func say_D9(character, speed):
+	por.visible = true
+	text.visible = true
+	ap.play("in")
+	curDia = "hint"
+	GlobalVariables.dia_isTalking = character
+	text.visible_characters = 0
+	text.text = "One more thing try not to get hurt without any energy. It could be detremental."
 	spell = true
 	spellSpeed = speed
 	ttimer.start()

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var vfx_hitSpark = preload("res://Scenes/vfx_hit_spark.tscn")
 @onready var results_screen = preload("res://Scenes/results_screen.tscn")
 @onready var ui = preload("res://Scenes/ui.tscn")
+@onready var title_card = preload("res://Scenes/title_card.tscn")
 
 var energy = 100
 var hurt = false
@@ -68,6 +69,7 @@ var max_jump_force = -270
 var state = 0
 
 func _ready():
+	$ff.stop()
 	GlobalVariables.player_energy = 100
 	
 func _physics_process(delta):
@@ -164,9 +166,11 @@ func _physics_process(delta):
 	if !slopeCast.is_colliding() && gR.is_colliding() && velocity.x >= 300 && Anim.rotation > -0.8 && Anim.rotation < -0.0:
 		if is_on_floor():
 			jump()
+			
 	elif !slopeCast.is_colliding() && gL.is_colliding() && velocity.x <= -300 && Anim.rotation > -0.8 && Anim.rotation < -0.0:
 		if is_on_floor():
 			jump()
+			
 	if !stop_moving:
 		move_and_slide()
 	else:
@@ -327,7 +331,7 @@ func animations(): # Animation update
 					
 		# Match Anim Speed
 		if velocity.x >= 300 or velocity.x <= -300:
-			Anim.speed_scale = lerp(Anim.speed_scale, 2.0, 0.01)
+			Anim.speed_scale = lerp(Anim.speed_scale, 1.5, 0.01)
 		else:
 			Anim.speed_scale = 1
 	else:
@@ -403,8 +407,7 @@ func rotateSprite():
 
 # Fall Limit
 func _on_Fall_limit_area_entered(area):
-	if area.is_in_group("player"):
-		SceneTransition.quick_fade("res://World.tscn")
+	RespawnEffect.play()
 
 # Debug
 func debugText():
@@ -439,12 +442,15 @@ func _on_trail_timer_timeout():
 
 
 func _on_hitbox_area_entered(area):
+	if area.is_in_group("replenish"):
+		GlobalVariables.player_energy = 100
 	if area.is_in_group("goal"):
 		SceneTransition.quick_fade_white("res://Scenes/results_screen.tscn")
 	if area.is_in_group("spring"):
 		sfx_spring.play()
 		velocity.y = -260
 	if area.is_in_group("carro"):
+		GlobalVariables.player_score += 10
 		var effect = vfx_collect.instantiate()
 		get_parent().add_child(effect)
 		effect.position = position
@@ -490,3 +496,32 @@ func frameFreeze(timeScale, duration):
 
 func _on_invincibilty_timeout():
 	hurt = false
+
+
+func _on_fall_limit_area_entered(area):
+	if area.is_in_group("player"):
+		print("no")
+		RespawnEffect.play()
+		velocity.y = 0
+		velocity.x = 0
+		position.x = GlobalVariables.RespawnX
+		position.y = GlobalVariables.RespawnY
+		GlobalVariables.player_energy = 100
+
+
+func _on_music_switch_area_entered(area):
+	if area.is_in_group("player"):
+		var tc = title_card.instantiate()
+		get_parent().add_child(tc)
+		$djs.play()
+		$ta.stop()
+
+
+func _on_djs_finished():
+	$ff.play()
+
+func _on_ff_finished():
+	$ff.play()
+
+func _on_ta_finished():
+	$ta.play()
