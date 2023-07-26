@@ -446,6 +446,7 @@ func _on_hitbox_area_entered(area):
 		GlobalVariables.player_energy = 100
 	if area.is_in_group("goal"):
 		SceneTransition.quick_fade_white("res://Scenes/results_screen.tscn")
+		area.queue_free()
 	if area.is_in_group("spring"):
 		sfx_spring.play()
 		velocity.y = -260
@@ -484,9 +485,6 @@ func _on_hitbox_area_entered(area):
 			effect2.position = Vector2(position.x,position.y + 20)
 			#remove_child(effect)
 			#remove_child(effect2)
-			
-	if area.is_in_group("NPC"):
-		pass
 func frameFreeze(timeScale, duration):
 	Engine.time_scale = timeScale
 	get_tree().create_timer(duration * timeScale)
@@ -500,7 +498,6 @@ func _on_invincibilty_timeout():
 
 func _on_fall_limit_area_entered(area):
 	if area.is_in_group("player"):
-		print("no")
 		RespawnEffect.play()
 		velocity.y = 0
 		velocity.x = 0

@@ -33,7 +33,7 @@ offset_top = 432.0
 offset_right = 1043.0
 offset_bottom = 480.0
 theme = ExtResource("3_3ymsh")
-text = "Please note that this demo is a proof of concept.
+text = "Please note that this demo is a proof of concept / prototype.
 and as such, some bugs and issues may be present during gameplay."
 horizontal_alignment = 1
 

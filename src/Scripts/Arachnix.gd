@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var world = get_node("World")
+#@onready var world = get_node("World")
 @onready var vfx_hit = preload("res://Scenes/vfx_hit.tscn")
 @onready var vfx_hitSpark = preload("res://Scenes/vfx_hit_spark.tscn")
 

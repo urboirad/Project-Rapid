@@ -77,9 +77,6 @@ func _on_hit_box_area_entered(area):
 				dead = true
 				$sfx_hit.play()
 				
-	else :
-		$FloorBox.disabled = false
-		$HitBox/CollisionShape2D.disabled = false
 
 
 func _on_back_check_area_entered(area):
