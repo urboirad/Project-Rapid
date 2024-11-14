@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cqf6676hte0ry" path="res://pRicon.png" id="1_kan8y"]
 [ext_resource type="PackedScene" uid="uid://7y18g7xxsba8" path="res://Scenes/Player.tscn" id="2"]
 [ext_resource type="Script" path="res://Scripts/RespawnPoint.gd" id="2_e2nc6"]
-[ext_resource type="PackedScene" path="res://Scenes/Fall Limit.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://fpps84621r46" path="res://Scenes/Fall Limit.tscn" id="4"]
 [ext_resource type="Script" path="res://Scripts/TestCam.gd" id="4_1nc8a"]
 [ext_resource type="AudioStream" uid="uid://hjrmin10dij5" path="res://Music/Project Rapid - Tutorial.wav" id="4_ah53i"]
 [ext_resource type="PackedScene" uid="uid://dkwrgwa2lse5s" path="res://Scenes/fps_label.tscn" id="5_x8tdq"]

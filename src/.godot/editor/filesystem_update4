@@ -1,9 +1,10 @@
 res://default_env.tres
 res://Scenes/demo_level.tscn
-res://main_theme.tres
 res://Tilesets/Test.tres
+res://main_theme.tres
+res://menu.gdshader
 res://Shaders/rain.gdshader
-res://Scripts/D1.gd
+res://Scripts/Player.gd
 res://World.tscn
 res://Scenes/Player.tscn
 res://Scenes/results_screen.tscn
@@ -11,9 +12,6 @@ res://Scenes/splash.tscn
 res://Scenes/menu.tscn
 res://Scenes/dialog_hud.tscn
 res://Scenes/weather.tscn
-res://menu.gdshader
-res://Scripts/Arachnix.gd
-res://Scripts/bb.gd
-res://Scripts/Hammerhead.gd
-res://Scripts/scene_transition.gd
-res://Scripts/Player.gd
+res://Scenes/Fall Limit.tscn
+res://Scenes/title_card.tscn
+res://Scripts/title_card.gd

@@ -408,6 +408,8 @@ func rotateSprite():
 # Fall Limit
 func _on_Fall_limit_area_entered(area):
 	RespawnEffect.play()
+	self.x = GlobalVariables.RespawnX
+	self.x = GlobalVariables.RespawnY
 
 # Debug
 func debugText():
@@ -450,6 +452,10 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("spring"):
 		sfx_spring.play()
 		velocity.y = -260
+	if area.is_in_group("fl"):
+		RespawnEffect.play()
+		self.position.x = GlobalVariables.RespawnX
+		self.position.y = GlobalVariables.RespawnY
 	if area.is_in_group("carro"):
 		GlobalVariables.player_score += 10
 		var effect = vfx_collect.instantiate()
@@ -512,6 +518,10 @@ func _on_music_switch_area_entered(area):
 		get_parent().add_child(tc)
 		$djs.play()
 		$ta.stop()
+		
+		print(get_parent().get_child(1).get_child(1))
+		get_parent().get_child(1).visible = true
+		get_parent().get_child(1).get_child(1).play("main")
 
 
 func _on_djs_finished():

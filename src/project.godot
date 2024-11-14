@@ -17,7 +17,7 @@ config/name_localized={
 }
 config/description="Project Rapid '23 is a demo for the upcoming game Project Rapid made specifically for SAGE '23 (Sonic Ameture Games Expo 2023)"
 run/main_scene="res://Scenes/splash.tscn"
-config/features=PackedStringArray("4.1")
+config/features=PackedStringArray("4.2")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://rapidSplash.png"
 boot_splash/use_filter=false

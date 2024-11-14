@@ -14,4 +14,6 @@ func _process(delta):
 func _on_area_entered(area):
 	if area.is_in_group("player"):
 		DialogHud.say_D9("Iris", 1)
+		
 		$CollisionShape2D.queue_free()
+		

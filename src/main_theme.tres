@@ -4,8 +4,8 @@
 [ext_resource type="FontFile" uid="uid://dyhsg2j4272wr" path="res://Fonts/ethnocentric rg.otf" id="2_enloo"]
 
 [sub_resource type="FontVariation" id="FontVariation_gix6w"]
-base_font = ExtResource("2_enloo")
 fallbacks = Array[Font]([ExtResource("2_0nemu")])
+base_font = ExtResource("2_enloo")
 
 [resource]
 default_font = SubResource("FontVariation_gix6w")
