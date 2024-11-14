@@ -1,4 +1,4 @@
-![Logo]("https://imgur.com/a/WAPXMYu")
+![Logo](Game%20Assets/Promo/LogoFullHD.png)
 
 **Projet Rapid '23 is a demo created for the Sonic Amateur Games Expo 2023 (SAGE '23), showcasing fast-paced, retro-inspired gameplay.**
 
