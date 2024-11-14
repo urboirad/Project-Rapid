@@ -1,0 +1,14 @@
+AnimationPlayer
+VideoStreamPlayer
+CollisionShape2D
+Area2D
+ColorRect
+CanvasLayer
+Sprite2D
+AudioStreamPlayer2D
+Label
+AudioStreamPlayer
+Node2D
+TileMap
+CanvasModulate
+AnimatedSprite2D

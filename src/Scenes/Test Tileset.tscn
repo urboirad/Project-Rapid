@@ -1,0 +1,49 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scenes/Slope_Right_Steep.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/WallHalfTop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Slope_Left.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Slope_Left_Steep.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Slope_Right.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Slope_Left_Steep2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Slope_Right_Steep2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Slope_Right2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Slope_Left2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/WallHalfBot.tscn" type="PackedScene" id=11]
+
+[node name="Test Tileset" type="Node2D"]
+position = Vector2( 32, 0 )
+
+[node name="Wall" parent="." instance=ExtResource( 2 )]
+position = Vector2( 80, 64 )
+
+[node name="Slope_Right_Steep" parent="." instance=ExtResource( 1 )]
+position = Vector2( -16, 32 )
+
+[node name="WallHalf" parent="." instance=ExtResource( 3 )]
+position = Vector2( 64, 0 )
+
+[node name="Slope_Right" parent="." instance=ExtResource( 6 )]
+position = Vector2( 16, 16 )
+
+[node name="Slope_Left" parent="." instance=ExtResource( 4 )]
+position = Vector2( 144, 16 )
+
+[node name="Slope_Left_Steep" parent="." instance=ExtResource( 5 )]
+position = Vector2( 176, 48 )
+
+[node name="Slope_Right_Steep2" parent="." instance=ExtResource( 8 )]
+position = Vector2( -16, 96 )
+
+[node name="Slope_Right2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 16, 112 )
+
+[node name="Slope_Left_Steep2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 176, 80 )
+
+[node name="Slope_Left2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 144, 112 )
+
+[node name="WallHalfBot" parent="." instance=ExtResource( 11 )]
+position = Vector2( 64, 112 )

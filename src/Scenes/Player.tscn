@@ -1,0 +1,420 @@
+[gd_scene load_steps=45 format=3 uid="uid://7y18g7xxsba8"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bb24ww0emtx4o" path="res://Assets/Player/Player.png" id="2"]
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="4_4blxc"]
+[ext_resource type="AudioStream" uid="uid://64sosbupuu77" path="res://SFX/Player/Boost.wav" id="5_1hcpt"]
+[ext_resource type="AudioStream" uid="uid://0hddhxn7ofn1" path="res://SFX/Player/Charge.wav" id="6_cbxwa"]
+[ext_resource type="AudioStream" uid="uid://woi81hu2tnmx" path="res://SFX/Player/Jump.wav" id="7_jndcq"]
+[ext_resource type="AudioStream" uid="uid://d3018kibc3fgx" path="res://SFX/Player/Jump_Charge.wav" id="8_mpg5g"]
+[ext_resource type="AudioStream" uid="uid://b5us2cwafs4ld" path="res://SFX/Player/Pickup.wav" id="9_uvtlg"]
+[ext_resource type="AudioStream" uid="uid://dutigd31wiufa" path="res://SFX/Spring.wav" id="10_mjm4w"]
+[ext_resource type="FontFile" uid="uid://bfgslgu4lfhx3" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="12_3ih1g"]
+[ext_resource type="AudioStream" uid="uid://hjrmin10dij5" path="res://Music/Project Rapid - Tutorial.wav" id="13_byqo0"]
+[ext_resource type="AudioStream" uid="uid://dndklwso8p68i" path="res://Music/Project Rapid - Frontier Foothills.wav" id="14_eq76h"]
+[ext_resource type="AudioStream" uid="uid://dplb2jrxk64j6" path="res://SFX/DJscratch.wav" id="15_twawr"]
+[ext_resource type="PackedScene" uid="uid://cvo4k6qneyjmh" path="res://Scenes/Dash.tscn" id="22"]
+[ext_resource type="PackedScene" uid="uid://cc1y7t7ketwv0" path="res://Scenes/DebugText.tscn" id="42"]
+
+[sub_resource type="RectangleShape2D" id="34"]
+size = Vector2(16, 21)
+
+[sub_resource type="AtlasTexture" id="63"]
+atlas = ExtResource("2")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="64"]
+atlas = ExtResource("2")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="60"]
+atlas = ExtResource("2")
+region = Rect2(544, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="65"]
+atlas = ExtResource("2")
+region = Rect2(576, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="36"]
+atlas = ExtResource("2")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1lwl"]
+atlas = ExtResource("2")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="37"]
+atlas = ExtResource("2")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2qr4"]
+atlas = ExtResource("2")
+region = Rect2(672, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="56"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="57"]
+atlas = ExtResource("2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="58"]
+atlas = ExtResource("2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="59"]
+atlas = ExtResource("2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="42"]
+atlas = ExtResource("2")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="43"]
+atlas = ExtResource("2")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="44"]
+atlas = ExtResource("2")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="45"]
+atlas = ExtResource("2")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="46"]
+atlas = ExtResource("2")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="66"]
+atlas = ExtResource("2")
+region = Rect2(608, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="67"]
+atlas = ExtResource("2")
+region = Rect2(640, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="51"]
+atlas = ExtResource("2")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="48"]
+atlas = ExtResource("2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="49"]
+atlas = ExtResource("2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="50"]
+atlas = ExtResource("2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="61"]
+atlas = ExtResource("2")
+region = Rect2(480, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="62"]
+atlas = ExtResource("2")
+region = Rect2(512, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="52"]
+atlas = ExtResource("2")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="23"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("63")
+}, {
+"duration": 1.0,
+"texture": SubResource("64")
+}, {
+"duration": 1.0,
+"texture": SubResource("60")
+}, {
+"duration": 9.22337e+18,
+"texture": SubResource("65")
+}],
+"loop": true,
+"name": &"Crouch",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("36")
+}],
+"loop": true,
+"name": &"Dash",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1lwl")
+}, {
+"duration": 9.22337e+18,
+"texture": SubResource("37")
+}],
+"loop": false,
+"name": &"Fall",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2qr4")
+}],
+"loop": true,
+"name": &"Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("56")
+}, {
+"duration": 1.0,
+"texture": SubResource("57")
+}, {
+"duration": 1.0,
+"texture": SubResource("58")
+}, {
+"duration": 1.0,
+"texture": SubResource("59")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("42")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("43")
+}, {
+"duration": 1.0,
+"texture": SubResource("44")
+}, {
+"duration": 1.0,
+"texture": SubResource("45")
+}, {
+"duration": 1.0,
+"texture": SubResource("46")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("66")
+}, {
+"duration": 2.0,
+"texture": SubResource("66")
+}, {
+"duration": 1.0,
+"texture": SubResource("67")
+}, {
+"duration": 1.0,
+"texture": SubResource("51")
+}],
+"loop": true,
+"name": &"Skid",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("48")
+}, {
+"duration": 1.0,
+"texture": SubResource("49")
+}, {
+"duration": 1.0,
+"texture": SubResource("50")
+}, {
+"duration": 1.0,
+"texture": SubResource("51")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("61")
+}, {
+"duration": 1.0,
+"texture": SubResource("62")
+}],
+"loop": false,
+"name": &"toCrouch",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("52")
+}],
+"loop": false,
+"name": &"toFall",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="55"]
+size = Vector2(9, 15)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+slide_on_ceiling = false
+floor_constant_speed = true
+script = ExtResource("1")
+JUMP_FORCE = -200
+MAX_SPEED = 200
+ACCELERATION = 5
+FRICTION = 40
+
+[node name="Dash" parent="." instance=ExtResource("22")]
+position = Vector2(0, 17)
+
+[node name="Hitbox" type="Area2D" parent="." groups=["player"]]
+
+[node name="AreaShape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 21.5)
+shape = SubResource("34")
+debug_color = Color(0.964706, 0, 0.494118, 0.419608)
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+position = Vector2(0, 16)
+target_position = Vector2(15, 0)
+
+[node name="cameraUp" type="RayCast2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+target_position = Vector2(0, -100)
+
+[node name="cameraDown" type="RayCast2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, 16)
+target_position = Vector2(0, 35)
+
+[node name="floorDetect" type="RayCast2D" parent="."]
+position = Vector2(0, 16)
+target_position = Vector2(0, 22)
+
+[node name="slopeDetect" type="RayCast2D" parent="."]
+position = Vector2(0, 24)
+target_position = Vector2(24, 0)
+
+[node name="groundDetectR" type="RayCast2D" parent="."]
+position = Vector2(0, 32)
+target_position = Vector2(27, 0)
+
+[node name="groundDetectL" type="RayCast2D" parent="."]
+position = Vector2(0, 32)
+target_position = Vector2(-27, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 20)
+sprite_frames = SubResource("23")
+animation = &"Idle"
+offset = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 24.5)
+shape = SubResource("55")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("4_4blxc")
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+one_shot = true
+
+[node name="DebugText" parent="." instance=ExtResource("42")]
+visible = false
+
+[node name="trailTimer" type="Timer" parent="."]
+wait_time = 0.08
+autostart = true
+
+[node name="sfx_boost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1hcpt")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="sfx_charge" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cbxwa")
+volume_db = -7.298
+bus = &"SFX"
+
+[node name="sfx_jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_jndcq")
+volume_db = -7.298
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="sfx_jumpCharge" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_mpg5g")
+volume_db = -5.474
+bus = &"SFX"
+
+[node name="sfx_pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_uvtlg")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="sfx_pickupSpecial" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_mjm4w")
+bus = &"SFX"
+
+[node name="sfx_spring" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_mjm4w")
+bus = &"SFX"
+
+[node name="FlashTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Invincibilty" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -18.0
+offset_top = -13.0
+offset_right = 22.0
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("12_3ih1g")
+text = "hurt"
+
+[node name="ta" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_byqo0")
+volume_db = -12.772
+autoplay = true
+bus = &"Music"
+
+[node name="ff" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-124, -1504)
+stream = ExtResource("14_eq76h")
+volume_db = 5.474
+bus = &"Music"
+
+[node name="djs" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-124, -1504)
+stream = ExtResource("15_twawr")
+volume_db = 10.035
+bus = &"Music"
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="trailTimer" to="." method="_on_trail_timer_timeout"]
+[connection signal="timeout" from="Invincibilty" to="." method="_on_invincibilty_timeout"]
+[connection signal="finished" from="ta" to="." method="_on_ta_finished"]
+[connection signal="finished" from="ff" to="." method="_on_ff_finished"]
+[connection signal="finished" from="djs" to="." method="_on_djs_finished"]

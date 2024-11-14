@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://duqh7v2tru0cq"]
+
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_jywup"]
+[ext_resource type="Texture2D" uid="uid://c71r623bsraju" path="res://Assets/Enemies/Bullet.png" id="2_mpqxe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hmua"]
+atlas = ExtResource("2_mpqxe")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_763kw"]
+atlas = ExtResource("2_mpqxe")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6frdj"]
+atlas = ExtResource("2_mpqxe")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_01c3i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hmua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_763kw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6frdj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4502g"]
+radius = 4.0
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_jywup")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_01c3i")
+frame_progress = 0.547722
+
+[node name="HitBox" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_4502g")
+debug_color = Color(0.968627, 0, 0.470588, 0.419608)
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_shape_entered" from="HitBox" to="." method="_on_hit_box_body_shape_entered"]

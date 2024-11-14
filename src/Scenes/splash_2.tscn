@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://7acrl2abfqt6"]
+
+[ext_resource type="VideoStream" path="res://Assets/SAGE '23 Splash Screen.ogv" id="1_7m58k"]
+
+[node name="splash2" type="Node2D"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 1278.0
+offset_bottom = 718.0
+stream = ExtResource("1_7m58k")
+autoplay = true

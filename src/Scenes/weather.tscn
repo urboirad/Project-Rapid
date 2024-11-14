@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtaoq2odw6mlm"]
+
+[ext_resource type="Shader" path="res://Shaders/rain.gdshader" id="1_8qwgq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ax6w8"]
+shader = ExtResource("1_8qwgq")
+shader_parameter/rain_amount = 300.0
+shader_parameter/near_rain_length = 0.01
+shader_parameter/far_rain_length = 0.131
+shader_parameter/near_rain_width = 1.0
+shader_parameter/far_rain_width = 0.5
+shader_parameter/near_rain_transparency = 1.0
+shader_parameter/far_rain_transparency = 0.5
+shader_parameter/rain_color = Color(0.6, 0.8, 0.8, 0.356863)
+shader_parameter/base_rain_speed = 1.0
+shader_parameter/additional_rain_speed = 0.5
+shader_parameter/slant = 0.0970001
+
+[node name="Weather" type="CanvasLayer"]
+layer = 6
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ax6w8")
+offset_right = 1416.0
+offset_bottom = 714.0
+color = Color(1, 1, 1, 0)

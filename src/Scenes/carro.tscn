@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://daq33svi7bq6i"]
+
+[ext_resource type="Texture2D" uid="uid://qx3yyur7i3t7" path="res://Assets/Carro.png" id="1_jeq52"]
+[ext_resource type="Script" path="res://Scripts/Carro.gd" id="2_yww5s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2ibq"]
+atlas = ExtResource("1_jeq52")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqpc2"]
+atlas = ExtResource("1_jeq52")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21be3"]
+atlas = ExtResource("1_jeq52")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2d3c"]
+atlas = ExtResource("1_jeq52")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggnaw"]
+atlas = ExtResource("1_jeq52")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7qby"]
+atlas = ExtResource("1_jeq52")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g32wj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2ibq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqpc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21be3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2d3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggnaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7qby")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4ebk"]
+size = Vector2(10, 10)
+
+[node name="Carro" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_g32wj")
+frame_progress = 0.108552
+script = ExtResource("2_yww5s")
+
+[node name="Area2D" type="Area2D" parent="." groups=["carro"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_a4ebk")
+metadata/_edit_lock_ = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

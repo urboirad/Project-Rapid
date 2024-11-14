@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkwrgwa2lse5s"]
+
+[ext_resource type="Theme" uid="uid://r7pa3bx4t8xj" path="res://main_theme.tres" id="1_bfqrf"]
+[ext_resource type="Script" path="res://Scripts/fps_label.gd" id="2_u7d3x"]
+
+[node name="FpsLabel" type="Label"]
+visible = false
+offset_left = 1182.0
+offset_top = 8.0
+offset_right = 1269.0
+offset_bottom = 34.0
+theme = ExtResource("1_bfqrf")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "FPS: 60"
+script = ExtResource("2_u7d3x")

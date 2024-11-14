@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbiwtcgy1rrqo"]
+
+[ext_resource type="Texture2D" uid="uid://osp5txtbct85" path="res://Assets/NPC/Iris.png" id="1_6jnfy"]
+[ext_resource type="Script" path="res://Scripts/NPC.gd" id="2_as5xr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgd6h"]
+atlas = ExtResource("1_6jnfy")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h307k"]
+atlas = ExtResource("1_6jnfy")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_si4k8"]
+atlas = ExtResource("1_6jnfy")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h55j"]
+atlas = ExtResource("1_6jnfy")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uh8gn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgd6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h307k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_si4k8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h55j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_maqea"]
+size = Vector2(20, 34)
+
+[node name="Iris" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_uh8gn")
+frame_progress = 0.974906
+script = ExtResource("2_as5xr")
+
+[node name="Area2D" type="Area2D" parent="." groups=["NPC"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_maqea")
+debug_color = Color(0.866667, 0.25098, 0.627451, 0.419608)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
