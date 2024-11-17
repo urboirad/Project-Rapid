@@ -273,7 +273,6 @@ slide_on_ceiling = false
 floor_constant_speed = true
 script = ExtResource("1")
 JUMP_FORCE = -200
-MAX_SPEED = 200
 ACCELERATION = 5
 FRICTION = 40
 

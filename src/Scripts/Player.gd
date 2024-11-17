@@ -24,7 +24,7 @@ var stop_moving = false
 # Export Variables
 @export var JUMP_FORCE: int = -130
 @export var JUMP_RELEASE_FORCE: int = -70
-@export var MAX_SPEED: int = 50
+@export var MAX_SPEED: int = 200
 @export var ACCELERATION: int = 10
 @export var FRICTION: int = 10
 @export var GRAVITY: int = 4
@@ -71,6 +71,7 @@ var state = 0
 func _ready():
 	$ff.stop()
 	GlobalVariables.player_energy = 100
+	print(get_parent().get_parent().get_child(0).get_child(0))
 	
 func _physics_process(delta):
 	
@@ -456,6 +457,15 @@ func _on_hitbox_area_entered(area):
 		RespawnEffect.play()
 		self.position.x = GlobalVariables.RespawnX
 		self.position.y = GlobalVariables.RespawnY
+	if area.is_in_group("ms"):
+		#var tc = title_card.instantiate()
+		#get_parent().get_parent().add_child(tc)
+		$djs.play()
+		$ta.stop()
+		
+		
+		get_parent().get_parent().get_child(0).visible = true
+		get_parent().get_parent().get_child(0).get_child(0).play("main")
 	if area.is_in_group("carro"):
 		GlobalVariables.player_score += 10
 		var effect = vfx_collect.instantiate()
